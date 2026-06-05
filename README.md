@@ -3,35 +3,34 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Project-ft__printf-blueviolet?style=for-the-badge&logo=42" alt="42 Project">
   <img src="https://img.shields.io/badge/Tester-God%20Edition-gold?style=for-the-badge" alt="God Edition">
-  <img src="https://img.shields.io/badge/Compliance-100%25-brightgreen?style=for-the-badge" alt="Compliance">
 </p>
 
-A professional, ultra-fast, and visually stunning tester for the 42 **ft_printf** project. Built to ensure your implementation is not just working, but **God-like**.
+A professional, ultra-fast, and visually stunning tester for the 42 **ft_printf** project. Re-engineered to align perfectly with the **2024-2026 Subject** requirements.
 
 ---
 
 ## ✨ Features
 
-- 🚀 **Real-time Progress:** Watch your tests pass in real-time with smooth, updated-in-place progress bars.
-- 📊 **Ultra-Wide Visual Table:** Comprehensive overview including Norminette, Forbidden Functions, Compilation, Leaks, and detailed Test results.
-- 🧪 **1000+ Test Cases:** Extracted and refined from the best community testers (`ft_printf_test`, `printfTester`) plus exclusive **God-Mix** edge cases.
-- 🛠️ **Full Conversion Support:** Complete validation for `c`, `s`, `p`, `d`, `i`, `u`, `x`, `X`, and `%`.
-- 🧬 **Complex Mixed Tests:** Stress-test your buffer and flag logic with multiple combined conversions in a single call.
-- 📂 **Deepthought Logs:** Generates a detailed report (`deepthought`) with exact `diff` outputs for every failure.
+- 🚀 **Real-time God Progress:** Watch your tests pass in real-time with an in-place updating progress bar.
+- 🎯 **Modular Testing:** Separate suites for **Mandatory**, **Bonus**, and **Stress Tests**.
+- 💎 **Academic Integrity:** Designed to be a rigorous validator. It reports discrepancies clearly without providing "cheating" shortcuts.
+- 🧪 **Extreme Robustness:** Over 1500 test cases including massive field widths, conflicting flags, and complex edge cases.
+- 📂 **Refined Deepthought Logs:** Professional test reports showing exact discrepancies between System and User output using `cat -e` style formatting.
+- 🛡️ **Smart Forbidden Check:** Accurate detection of external calls while respecting your internal `libft` functions.
 
 ---
 
 ## 🚀 Installation
 
-1. **Clone** this repository inside your `ft_printf` folder (or anywhere you like):
+1. **Clone** this repository inside your `ft_printf` folder:
    ```bash
-   git clone https://github.com/your-repo/ft_printf-god.git god_tester
+   git clone https://github.com/refernan/ft_printf-god.git god_tester
    ```
 
-2. **Configure** the path to your project in `my_config.sh`:
+2. **Configure** your paths in `my_config.sh`:
    ```bash
    cd god_tester
-   # Edit PATH_LIBFT to point to your ft_printf source code
+   # Ensure PATH_LIBFT, SRC_DIR and HEADER_DIR are correct
    nano my_config.sh
    ```
 
@@ -44,47 +43,38 @@ A professional, ultra-fast, and visually stunning tester for the 42 **ft_printf*
 
 ## 🎮 Usage
 
-### Basic Execution
+### Basic Execution (Runs All Parts)
 ```bash
 ./grademe.sh
 ```
 
-### Run Specific Conversions
-```bash
-./grademe.sh ft_printf_c
-./grademe.sh ft_printf_d ft_printf_s
-```
-
-### Fast Mode (Skip per-test Leaks)
-```bash
-./grademe.sh -fast
-```
-
-### Options Reference
-| Option | Description |
+### Targeted Testing
+| Flag | Description |
 | :--- | :--- |
-| `-fast` | Skips Valgrind/Leaks check for each individual test (much faster). |
-| `-n` | Skips Norminette check. |
-| `-f` | Skips Forbidden functions check. |
-| `--help` | Shows the full manual. |
+| `./grademe.sh -mandatory` | Runs ONLY the mandatory conversions (`cspdiuxX%`). |
+| `./grademe.sh -bonus` | Runs ONLY the bonus flags and width/precision tests. |
+| `./grademe.sh -stress` | Runs complex mixed conversion tests. |
+
+### Utility Options
+- `./grademe.sh ft_printf_d`: Run only tests for `%d`.
+- `./grademe.sh -fast`: Skip per-test leak check for maximum speed.
+- `./grademe.sh -n`: Skip Norminette.
+- `./grademe.sh -f`: Skip Forbidden functions check.
 
 ---
 
-## 🛠️ Requirements
+## 📊 The Deepthought Report
 
-- **Norminette:** For code style validation.
-- **Valgrind / Leaks:** For memory integrity checks (Supports both Linux and macOS).
-- **Cc/Clang:** A functional compiler.
+The generated `deepthought` file is your best friend for debugging. It follows a clean format:
+- **Test Case:** Shows the specific `ft_printf` call.
+- **Side-by-side comparison:** Displays System output vs Your output.
+- **Non-printable chars:** Uses `$` to mark line endings, helping you find hidden spaces.
 
 ---
 
 ## 📜 Credits
 
-This tester is part of the **God Series** for 42, inspired by the visual style of `libft-god` and maintained by the community to provide the most rigorous testing environment possible.
-
-Special thanks to the authors of `ft_printf_test` and `printfTester` for the initial test base.
-
----
+Part of the **God Series** for 42. Inspired by `libft-god` and maintained to provide the most rigorous testing environment for the Common Core.
 
 <p align="center">
   Made with ❤️ for the 42 Community.

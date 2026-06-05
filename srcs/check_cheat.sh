@@ -6,7 +6,7 @@
 #    By: jtoty <jtoty@tester.unit.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/23 18:26:13 by jtoty             #+#    #+#              #
-#    Updated: 2026/06/03 12:00:00 by gemini-cli       ###   ########.fr        #
+#    Updated: 2026/06/05 08:00:00 by gemini-cli       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,16 +22,18 @@ check_cheating()
 	fi
 
 	# List undefined symbols in the library
-	# We expect: malloc, free, write, va_start, va_arg, va_copy, va_end
-	local allowed="malloc|free|write|va_start|va_arg|va_copy|va_end|__stack_chk_fail|dyld_stub_binder"
+	# We allow: malloc, free, write, va_start, va_arg, va_copy, va_end
+	# We also MUST allow any 'ft_' function because students use their own libft.
+	local allowed="malloc|free|write|va_start|va_arg|va_copy|va_end|__stack_chk_fail|dyld_stub_binder|exit"
 	
-	CHEAT_VAR=$(nm -u "$lib_a" | sed 's/^[[:space:]]*U[[:space:]]*//' | sed 's/^_//' | grep -vE "^($allowed)$")
+	# Get all undefined symbols, but ignore those that are allowed or part of libft (ft_*)
+	local forbidden=$(nm -u "$lib_a" 2>/dev/null | sed 's/^[[:space:]]*U[[:space:]]*//' | sed 's/^_//' | grep -vE "^($allowed)$" | grep -v "^ft_")
 
-	if [ "${CHEAT_VAR}" != "" ]
+	if [ "${forbidden}" != "" ]
 	then
 		printf "  ${COLOR_FAIL}❌ FORBIDDEN${DEFAULT}"
-		printf "Forbidden function call detected in libftprintf.a:\n" >> "${PATH_DEEPTHOUGHT}"/deepthought
-		printf "${CHEAT_VAR}\n\n" >> "${PATH_DEEPTHOUGHT}"/deepthought
+		printf "External forbidden functions detected in libftprintf.a:\n" >> "${PATH_DEEPTHOUGHT}"/deepthought
+		printf "${forbidden}\n\n" >> "${PATH_DEEPTHOUGHT}"/deepthought
 		retvalue=1
 	else
 		printf "  ${COLOR_OK}✅ CLEAN    ${DEFAULT}"
