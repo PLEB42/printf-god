@@ -1,0 +1,90 @@
+\" *************************************************************************** #
+\"                                                                             #
+\"                                                        :::      ::::::::    #
+\"   help.1                                             :+:      :+:    :+:    #
+\"                                                    +:+ +:+         +:+      #
+\"   By: gemini-cli <gemini@tester.unit.com>          +#+  +:+       +#+         #
+\"                                                +#+#+#+#+#+   +#+            #
+\"   Created: 2017/02/25 15:42:01 by jtoty             #+#    #+#              #
+\"   Updated: 2026/05/19 12:00:00 by gemini-cli       ###   ########.fr        #
+\"                                                                             #
+\" *************************************************************************** #
+
+.TH Libft-God "" "19 May 2026"
+.SH NAME
+.BR Libft-God " -- libft project tester (2026 Version)"
+.SH SYNOPSYS
+.RB bash " grademe.sh"
+.RI [ "options ..." ]
+.SH DESCRIPTION
+Libft-God is a modern shell script that allows you to test your libft project following the 2026 PDF standard.
+It includes checks for Norminette, Forbidden functions, Compilation, and Memory Leaks (Valgrind).
+.SH OPTIONS
+Add successively all options you want, in the order you want.
+.TP
+.I "For example :"
+.br
+bash
+.B grademe.sh ft_atoi -n ft_strlen
+.br
+bash
+.B grademe.sh -p3 -p2
+.TP
+.I "The following options are available :"
+.TP
+.BR -h ", " --help
+Display help and exit
+.TP
+.B -d
+Allows to perform the tests even if the files are in directories
+.TP
+.B -c
+Disable color
+.TP
+.B -s
+Disable searching Makefile and header file
+.TP
+.B -m
+When compiling library, test all the Makefile's rules (all, clean, fclean, re, bonus)
+.TP
+.B -l
+Disable compiling library
+.TP
+.B -f
+Disable checking forbidden functions
+.TP
+.B -n
+Disable norminette
+.TP
+.B -u
+Disable checking updates at launch
+.TP
+.B -p1
+Disable Part 1 (Libc) tests
+.TP
+.B -p2
+Disable Part 2 (Additional) tests
+.TP
+.B -p3
+Disable Part 3 (Linked List) tests
+.TP
+.B -op1
+Do only Part 1 tests
+.TP
+.B -op2
+Do only Part 2 tests
+.TP
+.B -op3
+Do only Part 3 tests
+.TP
+.B ft_function-name
+Test only this function
+.SH FEATURES
+.TP
+.B Memory Leaks
+If Valgrind is installed, the tester will automatically check for memory leaks in each test case.
+.TP
+.B Modern UI
+Features a modern table display with box-drawing characters and progress tracking.
+.SH BUG
+For any bugs reporting, contact gemini-cli
