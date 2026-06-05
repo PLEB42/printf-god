@@ -1,0 +1,195 @@
+#include "ft_printf.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <limits.h>
+#include <stdint.h>
+
+static __attribute__((unused)) char *s_hidden = "hi low\0don't print me lol\0";
+static __attribute__((unused)) char *s2 = "hello";
+static __attribute__((unused)) int i_pos_1 = 878023;
+static __attribute__((unused)) char ch_pos_1 = 100, ch_neg_1 = -87;
+static __attribute__((unused)) short sh_pos_1 = 3047, sh_neg_1 = -8875;
+static __attribute__((unused)) long l_pos_1 = 22337203685477, l_neg_1 = -22337203685477;
+static __attribute__((unused)) long long ll_pos_1 = 22337203685477, ll_neg_1 = -22337203685477;
+static __attribute__((unused)) unsigned char uch_pos_1 = 100;
+static __attribute__((unused)) unsigned short ush_pos_1 = 3047;
+static __attribute__((unused)) unsigned int ui_pos_1 = 878023;
+static __attribute__((unused)) unsigned long ul_pos_1 = 22337203685477;
+static __attribute__((unused)) unsigned long long ull_pos_1 = 22337203685477;
+static __attribute__((unused)) long lmax = 9223372036854775807;
+static __attribute__((unused)) long lmin = -9223372036854775807;
+static __attribute__((unused)) long long llmax = 9223372036854775807;
+static __attribute__((unused)) long long llmin = -9223372036854775807ll;
+static __attribute__((unused)) unsigned long ulmax = 9223372036854775807;
+static __attribute__((unused)) unsigned long long ullmax = 9223372036854775807;
+static __attribute__((unused)) int ncm_p = 5;
+static __attribute__((unused)) char a01;
+static __attribute__((unused)) unsigned char a02;
+static __attribute__((unused)) short a03;
+static __attribute__((unused)) unsigned short a04;
+static __attribute__((unused)) int a05;
+static __attribute__((unused)) unsigned int a06;
+static __attribute__((unused)) long a07;
+static __attribute__((unused)) unsigned long a08;
+static __attribute__((unused)) long long a09;
+static __attribute__((unused)) unsigned long long a10;
+static __attribute__((unused)) char *a11;
+static __attribute__((unused)) void *a12;
+static __attribute__((unused)) int i;
+static __attribute__((unused)) long l;
+static __attribute__((unused)) char *str = "abc";
+static __attribute__((unused)) int t = 42;
+static __attribute__((unused)) void test_moulitest_06(void) {}
+
+int main(int argc, char **argv)
+{
+	if (argc < 2) return 1;
+	int test_num = atoi(argv[1]);
+	int ret = 0;
+	if (test_num == 1)
+		ret = ft_printf("{%3c}", 0);
+	else if (test_num == 2)
+		ret = ft_printf("%.c", 0);
+	else if (test_num == 3)
+		ret = ft_printf("%lc", L'a');
+	else if (test_num == 4)
+		ret = ft_printf("%.c", 'a');
+	else if (test_num == 5)
+		ret = ft_printf("%-c", 'a');
+	else if (test_num == 6)
+		ret = ft_printf("%5c", '\0');
+	else if (test_num == 7)
+		ret = ft_printf("%-5c", '\0');
+	else if (test_num == 8)
+		ret = ft_printf("%10c", 't');
+	else if (test_num == 9)
+		ret = ft_printf("%1c", 'y');
+	else if (test_num == 10)
+		ret = ft_printf("%1c",      'x');
+	else if (test_num == 11)
+		ret = ft_printf("%20c",      'x');
+	else if (test_num == 12)
+		ret = ft_printf("%-20c",      'x');
+	else if (test_num == 13)
+		ret = ft_printf("%-1c", '0');
+	else if (test_num == 14)
+		ret = ft_printf(" %-2c ", '0');
+	else if (test_num == 15)
+		ret = ft_printf(" %-3c", '0' - 256);
+	else if (test_num == 16)
+		ret = ft_printf("%-4c ", '0' + 256);
+	else if (test_num == 17)
+		ret = ft_printf(" %-1c %-2c %-3c ", '0', 0, '1');
+	else if (test_num == 18)
+		ret = ft_printf(" %-1c %-2c %-3c ", ' ', ' ', ' ');
+	else if (test_num == 19)
+		ret = ft_printf(" %-1c %-2c %-3c ", '1', '2', '3');
+	else if (test_num == 20)
+		ret = ft_printf(" %-1c %-2c %-3c ", '2', '1', 0);
+	else if (test_num == 21)
+		ret = ft_printf(" %-1c %-2c %-3c ", 0, '1', '2');
+		else if (test_num == 22)
+		ret = ft_printf("%500c", "a");
+	else if (test_num == 23)
+		ret = ft_printf("%-500c", "a");
+	else if (test_num == 24)
+		ret = ft_printf("%0500c", "a");
+	else if (test_num == 25)
+		ret = ft_printf("%500.c", "a");
+	else if (test_num == 26)
+		ret = ft_printf("%500.10c", "a");
+	else if (test_num == 27)
+		ret = ft_printf("%100c", "A");
+	else if (test_num == 28)
+		ret = ft_printf("%101c", "B");
+	else if (test_num == 29)
+		ret = ft_printf("%102c", "A");
+	else if (test_num == 30)
+		ret = ft_printf("%103c", "B");
+	else if (test_num == 31)
+		ret = ft_printf("%104c", "A");
+	else if (test_num == 32)
+		ret = ft_printf("%105c", "B");
+	else if (test_num == 33)
+		ret = ft_printf("%106c", "A");
+	else if (test_num == 34)
+		ret = ft_printf("%107c", "B");
+	else if (test_num == 35)
+		ret = ft_printf("%108c", "A");
+	else if (test_num == 36)
+		ret = ft_printf("%109c", "B");
+	else if (test_num == 37)
+		ret = ft_printf("%110c", "A");
+	else if (test_num == 38)
+		ret = ft_printf("%111c", "B");
+	else if (test_num == 39)
+		ret = ft_printf("%112c", "A");
+	else if (test_num == 40)
+		ret = ft_printf("%113c", "B");
+	else if (test_num == 41)
+		ret = ft_printf("%114c", "A");
+	else if (test_num == 42)
+		ret = ft_printf("%115c", "B");
+	else if (test_num == 43)
+		ret = ft_printf("%116c", "A");
+	else if (test_num == 44)
+		ret = ft_printf("%117c", "B");
+	else if (test_num == 45)
+		ret = ft_printf("%118c", "A");
+	else if (test_num == 46)
+		ret = ft_printf("%119c", "B");
+	else if (test_num == 47)
+		ret = ft_printf("%120c", "A");
+	else if (test_num == 48)
+		ret = ft_printf("%121c", "B");
+	else if (test_num == 49)
+		ret = ft_printf("%122c", "A");
+	else if (test_num == 50)
+		ret = ft_printf("%123c", "B");
+	else if (test_num == 51)
+		ret = ft_printf("%124c", "A");
+	else if (test_num == 52)
+		ret = ft_printf("%125c", "B");
+	else if (test_num == 53)
+		ret = ft_printf("%126c", "A");
+	else if (test_num == 54)
+		ret = ft_printf("%127c", "B");
+	else if (test_num == 55)
+		ret = ft_printf("%128c", "A");
+	else if (test_num == 56)
+		ret = ft_printf("%129c", "B");
+	else if (test_num == 57)
+		ret = ft_printf("%130c", "A");
+	else if (test_num == 58)
+		ret = ft_printf("%131c", "B");
+	else if (test_num == 59)
+		ret = ft_printf("%132c", "A");
+	else if (test_num == 60)
+		ret = ft_printf("%133c", "B");
+	else if (test_num == 61)
+		ret = ft_printf("%134c", "A");
+	else if (test_num == 62)
+		ret = ft_printf("%135c", "B");
+	else if (test_num == 63)
+		ret = ft_printf("%136c", "A");
+	else if (test_num == 64)
+		ret = ft_printf("%137c", "B");
+	else if (test_num == 65)
+		ret = ft_printf("%138c", "A");
+	else if (test_num == 66)
+		ret = ft_printf("%139c", "B");
+	else if (test_num == 67)
+		ret = ft_printf("%140c", "A");
+	else if (test_num == 68)
+		ret = ft_printf("%141c", "B");
+	else if (test_num == 69)
+		ret = ft_printf("%142c", "A");
+	else if (test_num == 70)
+		ret = ft_printf("%143c", "B");
+	else if (test_num == 71)
+		ret = ft_printf("%144c", "A");
+printf("\n[RET: %d]", ret);
+	return 0;
+}
