@@ -16,15 +16,20 @@ draw_static_progress()
 {
 	local current=$1
 	local total=$2
-	local width=40
-	local percent=$((current * 100 / total))
-	local filled=$((current * width / total))
+	local width=50
+	local percent=0
+	[ $total -gt 0 ] && percent=$((current * 100 / total))
+	local filled=0
+	[ $total -gt 0 ] && filled=$((current * width / total))
 	local empty=$((width - filled))
-	printf "\n${COLOR_INFO}Global Progress: ["
+	
+	# Reserve space at the bottom of the current view
+	printf "\n\033[K${COLOR_TITLE}👑 GOD PROGRESS: ["
 	for ((j=0; j<filled; j++)); do printf "█"; done
 	for ((j=0; j<empty; j++)); do printf "░"; done
 	printf "] %d%%${DEFAULT}\033[1A\r" $percent
 }
+
 
 render_test_bar()
 {
@@ -64,7 +69,7 @@ check_turned_in_file()
 	local file_to_check=$1
 	local clean_name=$(echo $file_to_check | sed 's/_bonus//g')
 	
-	if [ -e "${PATH_LIBFT}/ft_printf.c" ] || [ -e "${PATH_LIBFT}/${SRC_DIR}/ft_printf.c" ]
+	if [ -d "${PATH_LIBFT}" ] && ([ -e "${PATH_LIBFT}/ft_printf.c" ] || [ -e "${PATH_LIBFT}/${SRC_DIR}/ft_printf.c" ])
 	then
 		return 1
 	else
@@ -101,7 +106,7 @@ test_function()
 			let "total_tested += 1"
 			local func_name=$(echo "$function_raw" | cut -d . -f 1 | sed 's/_bonus//g')
 			
-			printf "│ ${COLOR_FUNC}%-17s${DEFAULT} │" "${func_name}"
+			printf "\r\033[K│ ${COLOR_FUNC}%-17s${DEFAULT} │" "${func_name}"
 			
 			check_turned_in_file $function_raw
 			if [ $? -eq 1 ]
@@ -134,8 +139,8 @@ test_function()
 					
 				# Run Tests
 				local kmax=0
-				local test_dir="${PATH_TEST}/tests/Part1_functions/${func_name}"
-				[ ! -d "$test_dir" ] && test_dir="${PATH_TEST}/tests/Part2_functions/${func_name}"
+				local func_folder=$(echo "$function_raw" | cut -d . -f 1)
+				local test_dir="${PATH_TEST}/tests/${part_name}_functions/${func_folder}"
 				
 				if [ -d "$test_dir" ]; then
 					cd "$test_dir"
@@ -147,6 +152,7 @@ test_function()
 				if [ $kmax -eq 0 ]; then
 					printf "\033[${TEST_COL}G  ${COLOR_FAIL}❌ NO TESTS${DEFAULT}"
 				else
+					printf "\n= %s ================================================================\n" "${func_name}" >> "${PATH_DEEPTHOUGHT}"/deepthought
 					for ((k=1; k<=kmax; k++))
 					do
 						# Update real-time bar
@@ -163,10 +169,20 @@ test_function()
 						local text=$(printf "%02d" $k)
 						local output_file="$test_dir/user_output_test$text"
 						local expected_file="$test_dir/test$text.output"
+						
+						# Extract format string for logging
+						local format_call=$(grep -m 1 "test_num == $k)" "$test_dir/main.c" -A 1 | grep "ft_printf" | sed 's/^[ \t]*//')
+						
 						"${PATH_TEST}"/user_exe $k > "$output_file" 2>/dev/null
+						local res_diff=0
 						if [ $? -eq 0 ] && diff "$output_file" "$expected_file" > /dev/null 2>&1; then
 							let "passed += 1"
+						else
+							res_diff=1
 						fi
+						
+						# Log to deepthought
+						log_deepthought $k "$test_dir" "$format_call"
 					done
 					
 					# Final Bar Render
@@ -206,6 +222,7 @@ test_function()
 			fi
 			
 			let "GLOBAL_CURRENT += 1"
+			draw_static_progress $GLOBAL_CURRENT $GLOBAL_TOTAL
 			[ -e "${PATH_TEST}"/user_exe ] && rm -f "${PATH_TEST}"/user_exe
 		fi
 		let "i += 1"
@@ -214,8 +231,5 @@ test_function()
 	printf "${BOLD}└───────────────────┴─────────┴───────────────┴────────┴────────┴──────────────────────────────────────────────────────────────┴────────┘${DEFAULT}\n"
 	local color_summary="${COLOR_OK}"
 	[ $success -lt $total_tested ] && color_summary="${COLOR_FAIL}"
-	printf "${BOLD}${part_name} Summary: ${color_summary}${success}/${total_tested}${DEFAULT} functions passed.\n"
-	
-	draw_static_progress $GLOBAL_CURRENT $GLOBAL_TOTAL
-	printf "\n"
+	printf "\n${BOLD}${part_name} Summary: ${color_summary}${success}/${total_tested}${DEFAULT} functions passed.\n"
 }

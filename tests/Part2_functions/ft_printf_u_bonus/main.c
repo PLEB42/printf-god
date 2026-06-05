@@ -1,0 +1,601 @@
+#include "ft_printf.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <limits.h>
+#include <stdint.h>
+
+static __attribute__((unused)) char *s_hidden = "hi low\0don't print me lol\0";
+static __attribute__((unused)) char *s2 = "hello";
+static __attribute__((unused)) int i_pos_1 = 878023;
+static __attribute__((unused)) char ch_pos_1 = 100, ch_neg_1 = -87;
+static __attribute__((unused)) short sh_pos_1 = 3047, sh_neg_1 = -8875;
+static __attribute__((unused)) long l_pos_1 = 22337203685477, l_neg_1 = -22337203685477;
+static __attribute__((unused)) long long ll_pos_1 = 22337203685477, ll_neg_1 = -22337203685477;
+static __attribute__((unused)) unsigned char uch_pos_1 = 100;
+static __attribute__((unused)) unsigned short ush_pos_1 = 3047;
+static __attribute__((unused)) unsigned int ui_pos_1 = 878023;
+static __attribute__((unused)) unsigned long ul_pos_1 = 22337203685477;
+static __attribute__((unused)) unsigned long long ull_pos_1 = 22337203685477;
+static __attribute__((unused)) long lmax = 9223372036854775807;
+static __attribute__((unused)) long lmin = -9223372036854775807;
+static __attribute__((unused)) long long llmax = 9223372036854775807;
+static __attribute__((unused)) long long llmin = -9223372036854775807ll;
+static __attribute__((unused)) unsigned long ulmax = 9223372036854775807;
+static __attribute__((unused)) unsigned long long ullmax = 9223372036854775807;
+static __attribute__((unused)) int ncm_p = 5;
+static __attribute__((unused)) char a01;
+static __attribute__((unused)) unsigned char a02;
+static __attribute__((unused)) short a03;
+static __attribute__((unused)) unsigned short a04;
+static __attribute__((unused)) int a05;
+static __attribute__((unused)) unsigned int a06;
+static __attribute__((unused)) long a07;
+static __attribute__((unused)) unsigned long a08;
+static __attribute__((unused)) long long a09;
+static __attribute__((unused)) unsigned long long a10;
+static __attribute__((unused)) char *a11;
+static __attribute__((unused)) void *a12;
+static __attribute__((unused)) int i;
+static __attribute__((unused)) long l;
+static __attribute__((unused)) char *str = "abc";
+static __attribute__((unused)) int t = 42;
+static __attribute__((unused)) void test_moulitest_06(void) {}
+
+int main(int argc, char **argv)
+{
+	if (argc < 2) return 1;
+	int test_num = atoi(argv[1]);
+	int ret = 0;
+	if (test_num == 1)
+		ret = ft_printf("%.4u", 42);
+	else if (test_num == 2)
+		ret = ft_printf("%.4u", 424242);
+	else if (test_num == 3)
+		ret = ft_printf("%15.4u", 42);
+	else if (test_num == 4)
+		ret = ft_printf("%15.4u", 424242);
+	else if (test_num == 5)
+		ret = ft_printf("%8.4u", 424242424);
+	else if (test_num == 6)
+		ret = ft_printf("%4.15u", 42);
+	else if (test_num == 7)
+		ret = ft_printf("%4.15u", 424242);
+	else if (test_num == 8)
+		ret = ft_printf("%4.8u", 424242424);
+	else if (test_num == 9)
+		ret = ft_printf("%.u, %.0u", 0, 0);
+	else if (test_num == 10)
+		ret = ft_printf("%-u", 42);
+	else if (test_num == 11)
+		ret = ft_printf("%7u", 33);
+	else if (test_num == 12)
+		ret = ft_printf("%3u", 0);
+	else if (test_num == 13)
+		ret = ft_printf("%5u", 52625);
+	else if (test_num == 14)
+		ret = ft_printf("%4u", 94827);
+	else if (test_num == 15)
+		ret = ft_printf("%-7u", 33);
+	else if (test_num == 16)
+		ret = ft_printf("%-3u", 0);
+	else if (test_num == 17)
+		ret = ft_printf("%-5u", 52625);
+	else if (test_num == 18)
+		ret = ft_printf("%-4u", 94827);
+	else if (test_num == 19)
+		ret = ft_printf("%.5u", 2);
+	else if (test_num == 20)
+		ret = ft_printf("%.3u", 0);
+	else if (test_num == 21)
+		ret = ft_printf("%.4u", 5263);
+	else if (test_num == 22)
+		ret = ft_printf("%.3u", 13862);
+	else if (test_num == 23)
+		ret = ft_printf("%05u", 43);
+	else if (test_num == 24)
+		ret = ft_printf("%03u", 0);
+	else if (test_num == 25)
+		ret = ft_printf("%03u", 634);
+	else if (test_num == 26)
+		ret = ft_printf("%8.5u", 34);
+	else if (test_num == 27)
+		ret = ft_printf("%8.5u", 0);
+	else if (test_num == 28)
+		ret = ft_printf("%8.3u", 8375);
+	else if (test_num == 29)
+		ret = ft_printf("%3.7u", 3267);
+	else if (test_num == 30)
+		ret = ft_printf("%3.3u", 6983);
+	else if (test_num == 31)
+		ret = ft_printf("%-8.5u", 34);
+	else if (test_num == 32)
+		ret = ft_printf("%-8.5u", 0);
+	else if (test_num == 33)
+		ret = ft_printf("%-8.3u", 8375);
+	else if (test_num == 34)
+		ret = ft_printf("%-3.7u", 3267);
+	else if (test_num == 35)
+		ret = ft_printf("%-3.3u", 6983);
+	else if (test_num == 36)
+		ret = ft_printf("%08.5u", 34);
+	else if (test_num == 37)
+		ret = ft_printf("%08.5u", 0);
+	else if (test_num == 38)
+		ret = ft_printf("%08.3u", 8375);
+	else if (test_num == 39)
+		ret = ft_printf("%03.7u", 3267);
+	else if (test_num == 40)
+		ret = ft_printf("%03.3u", 6983);
+	else if (test_num == 41)
+		ret = ft_printf("%hhu", (unsigned char)45);
+	else if (test_num == 42)
+		ret = ft_printf("%hu", (unsigned short)385);
+	else if (test_num == 43)
+		ret = ft_printf("%hhu", uch_pos_1);
+	else if (test_num == 44)
+		ret = ft_printf("%hu", ush_pos_1);
+	else if (test_num == 45)
+		ret = ft_printf("%hu", (unsigned short)65535);
+	else if (test_num == 46)
+		ret = ft_printf("%hhu", (unsigned char)255);
+	else if (test_num == 47)
+		ret = ft_printf("%037lu", 22337203685477ul);
+	else if (test_num == 48)
+		ret = ft_printf("%37llu", 522337203685470ull);
+	else if (test_num == 49)
+		ret = ft_printf("%.0u", 0);
+	else if (test_num == 50)
+		ret = ft_printf("%.u", 0);
+	else if (test_num == 51)
+		ret = ft_printf("%5.0u", 0);
+	else if (test_num == 52)
+		ret = ft_printf("%5.u", 0);
+	else if (test_num == 53)
+		ret = ft_printf("%-5.0u", 0);
+	else if (test_num == 54)
+		ret = ft_printf("%-5.u", 0);
+	else if (test_num == 55)
+		ret = ft_printf("%hu%#lx%hhx", ush_pos_1, ul_pos_1, uch_pos_1);
+	else if (test_num == 56)
+		ret = ft_printf("%hu%#lx%hhx", ush_pos_1, ul_pos_1, uch_pos_1);
+	else if (test_num == 57)
+		ret = ft_printf("p29 %.3u\n", 100);
+	else if (test_num == 58)
+		ret = ft_printf("p30 %.0u\n", 100);
+	else if (test_num == 59)
+		ret = ft_printf("p31 %.4u\n", 100);
+	else if (test_num == 60)
+		ret = ft_printf("p32 %.10u\n", 100);
+	else if (test_num == 61)
+		ret = ft_printf("p33 %.50u\n", 100);
+	else if (test_num == 62)
+		ret = ft_printf("p34 %.1u\n", 100);
+	else if (test_num == 63)
+		ret = ft_printf("p35 %.3u\n", 100);
+	else if (test_num == 64)
+		ret = ft_printf("p36 %.0u\n", 0);
+	else if (test_num == 65)
+		ret = ft_printf("%1u",      1024u);
+	else if (test_num == 66)
+		ret = ft_printf("%1u",      -1024u);
+	else if (test_num == 67)
+		ret = ft_printf("%20u",      1024u);
+	else if (test_num == 68)
+		ret = ft_printf("%20u",      -1024u);
+	else if (test_num == 69)
+		ret = ft_printf("%-20u",      1024u);
+	else if (test_num == 70)
+		ret = ft_printf("%-20u",      -1024u);
+	else if (test_num == 71)
+		ret = ft_printf("%020u",      1024u);
+	else if (test_num == 72)
+		ret = ft_printf("%020u",      -1024u);
+	else if (test_num == 73)
+		ret = ft_printf("%.20u",      1024u);
+	else if (test_num == 74)
+		ret = ft_printf("%.20u",      -1024u);
+	else if (test_num == 75)
+		ret = ft_printf("%20.5u",      1024u);
+	else if (test_num == 76)
+		ret = ft_printf("%20.5u",      -1024u);
+	else if (test_num == 77)
+		ret = ft_printf("%020.5u",     1024u);
+	else if (test_num == 78)
+		ret = ft_printf("%020.5u",     -1024u);
+	else if (test_num == 79)
+		ret = ft_printf("%20.u",       1024u);
+	else if (test_num == 80)
+		ret = ft_printf("%20.0u",      -1024u);
+	else if (test_num == 81)
+		ret = ft_printf("%20.u",       0u);
+	else if (test_num == 82)
+		ret = ft_printf(" %01u ", 0);
+	else if (test_num == 83)
+		ret = ft_printf(" %02u ", -1);
+	else if (test_num == 84)
+		ret = ft_printf(" %03u ", 1);
+	else if (test_num == 85)
+		ret = ft_printf(" %04u ", 9);
+	else if (test_num == 86)
+		ret = ft_printf(" %01u ", 10);
+	else if (test_num == 87)
+		ret = ft_printf(" %02u ", 11);
+	else if (test_num == 88)
+		ret = ft_printf(" %03u ", 15);
+	else if (test_num == 89)
+		ret = ft_printf(" %04u ", 16);
+	else if (test_num == 90)
+		ret = ft_printf(" %05u ", 17);
+	else if (test_num == 91)
+		ret = ft_printf(" %01u ", 99);
+	else if (test_num == 92)
+		ret = ft_printf(" %02u ", 100);
+	else if (test_num == 93)
+		ret = ft_printf(" %03u ", 101);
+	else if (test_num == 94)
+		ret = ft_printf(" %01u ", -9);
+	else if (test_num == 95)
+		ret = ft_printf(" %02u ", -10);
+	else if (test_num == 96)
+		ret = ft_printf(" %03u ", -11);
+	else if (test_num == 97)
+		ret = ft_printf(" %04u ", -14);
+	else if (test_num == 98)
+		ret = ft_printf(" %05u ", -15);
+	else if (test_num == 99)
+		ret = ft_printf(" %06u ", -16);
+	else if (test_num == 100)
+		ret = ft_printf(" %01u ", -99);
+	else if (test_num == 101)
+		ret = ft_printf(" %02u ", -100);
+	else if (test_num == 102)
+		ret = ft_printf(" %03u ", -101);
+	else if (test_num == 103)
+		ret = ft_printf(" %09u ", INT_MAX);
+	else if (test_num == 104)
+		ret = ft_printf(" %010u ", INT_MIN);
+	else if (test_num == 105)
+		ret = ft_printf(" %011u ", LONG_MAX);
+	else if (test_num == 106)
+		ret = ft_printf(" %012u ", LONG_MIN);
+	else if (test_num == 107)
+		ret = ft_printf(" %013u ", UINT_MAX);
+	else if (test_num == 108)
+		ret = ft_printf(" %014u ", ULONG_MAX);
+	else if (test_num == 109)
+		ret = ft_printf(" %015u ", 9223372036854775807LL);
+	else if (test_num == 110)
+		ret = ft_printf(" %09u %010u %011u %012u %013u %014u %015u", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	else if (test_num == 111)
+		ret = ft_printf(" %.1u ", 0);
+	else if (test_num == 112)
+		ret = ft_printf(" %.2u ", -1);
+	else if (test_num == 113)
+		ret = ft_printf(" %.2u ", 1);
+	else if (test_num == 114)
+		ret = ft_printf(" %.1u ", 9);
+	else if (test_num == 115)
+		ret = ft_printf(" %.2u ", 10);
+	else if (test_num == 116)
+		ret = ft_printf(" %.3u ", 11);
+	else if (test_num == 117)
+		ret = ft_printf(" %.4u ", 15);
+	else if (test_num == 118)
+		ret = ft_printf(" %.5u ", 16);
+	else if (test_num == 119)
+		ret = ft_printf(" %.6u ", 17);
+	else if (test_num == 120)
+		ret = ft_printf(" %.1u ", 99);
+	else if (test_num == 121)
+		ret = ft_printf(" %.2u ", 100);
+	else if (test_num == 122)
+		ret = ft_printf(" %.3u ", 101);
+	else if (test_num == 123)
+		ret = ft_printf(" %.1u ", -9);
+	else if (test_num == 124)
+		ret = ft_printf(" %.2u ", -10);
+	else if (test_num == 125)
+		ret = ft_printf(" %.3u ", -11);
+	else if (test_num == 126)
+		ret = ft_printf(" %.4u ", -14);
+	else if (test_num == 127)
+		ret = ft_printf(" %.1u ", -15);
+	else if (test_num == 128)
+		ret = ft_printf(" %.2u ", -16);
+	else if (test_num == 129)
+		ret = ft_printf(" %.3u ", -99);
+	else if (test_num == 130)
+		ret = ft_printf(" %.3u ", -100);
+	else if (test_num == 131)
+		ret = ft_printf(" %.4u ", -101);
+	else if (test_num == 132)
+		ret = ft_printf(" %.8u ", INT_MAX);
+	else if (test_num == 133)
+		ret = ft_printf(" %.9u ", INT_MIN);
+	else if (test_num == 134)
+		ret = ft_printf(" %.10u ", LONG_MAX);
+	else if (test_num == 135)
+		ret = ft_printf(" %.11u ", LONG_MIN);
+	else if (test_num == 136)
+		ret = ft_printf(" %.12u ", UINT_MAX);
+	else if (test_num == 137)
+		ret = ft_printf(" %.13u ", ULONG_MAX);
+	else if (test_num == 138)
+		ret = ft_printf(" %.14u ", 9223372036854775807LL);
+	else if (test_num == 139)
+		ret = ft_printf(" %.8u %.9u %.10u %.11u %.12u %.13u %.14u", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	else if (test_num == 140)
+		ret = ft_printf(" %-1u ", 0);
+	else if (test_num == 141)
+		ret = ft_printf(" %-2u ", -1);
+	else if (test_num == 142)
+		ret = ft_printf(" %-3u ", 1);
+	else if (test_num == 143)
+		ret = ft_printf(" %-4u ", 9);
+	else if (test_num == 144)
+		ret = ft_printf(" %-1u ", 10);
+	else if (test_num == 145)
+		ret = ft_printf(" %-2u ", 11);
+	else if (test_num == 146)
+		ret = ft_printf(" %-3u ", 15);
+	else if (test_num == 147)
+		ret = ft_printf(" %-4u ", 16);
+	else if (test_num == 148)
+		ret = ft_printf(" %-5u ", 17);
+	else if (test_num == 149)
+		ret = ft_printf(" %-1u ", 99);
+	else if (test_num == 150)
+		ret = ft_printf(" %-2u ", 100);
+	else if (test_num == 151)
+		ret = ft_printf(" %-3u ", 101);
+	else if (test_num == 152)
+		ret = ft_printf(" %-1u ", -9);
+	else if (test_num == 153)
+		ret = ft_printf(" %-2u ", -10);
+	else if (test_num == 154)
+		ret = ft_printf(" %-3u ", -11);
+	else if (test_num == 155)
+		ret = ft_printf(" %-4u ", -14);
+	else if (test_num == 156)
+		ret = ft_printf(" %-5u ", -15);
+	else if (test_num == 157)
+		ret = ft_printf(" %-6u ", -16);
+	else if (test_num == 158)
+		ret = ft_printf(" %-1u ", -99);
+	else if (test_num == 159)
+		ret = ft_printf(" %-2u ", -100);
+	else if (test_num == 160)
+		ret = ft_printf(" %-3u ", -101);
+	else if (test_num == 161)
+		ret = ft_printf(" %-9u ", INT_MAX);
+	else if (test_num == 162)
+		ret = ft_printf(" %-10u ", INT_MIN);
+	else if (test_num == 163)
+		ret = ft_printf(" %-11u ", LONG_MAX);
+	else if (test_num == 164)
+		ret = ft_printf(" %-12u ", LONG_MIN);
+	else if (test_num == 165)
+		ret = ft_printf(" %-13u ", UINT_MAX);
+	else if (test_num == 166)
+		ret = ft_printf(" %-14u ", ULONG_MAX);
+	else if (test_num == 167)
+		ret = ft_printf(" %-15u ", 9223372036854775807LL);
+	else if (test_num == 168)
+		ret = ft_printf(" %-9u %-10u %-11u %-12u %-13u %-14u %-15u", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+		else if (test_num == 169)
+		ret = ft_printf("{%500u}", 42);
+	else if (test_num == 170)
+		ret = ft_printf("{%-500u}", 42);
+	else if (test_num == 171)
+		ret = ft_printf("%1000u", 4294967295);
+	else if (test_num == 172)
+		ret = ft_printf("%.500u", 42);
+	else if (test_num == 173)
+		ret = ft_printf("%600.500u", 42);
+	else if (test_num == 174)
+		ret = ft_printf("%-0500u", 42);
+	else if (test_num == 175)
+		ret = ft_printf("%0500.250u", 12345);
+	else if (test_num == 176)
+		ret = ft_printf("%.u", 0);
+	else if (test_num == 177)
+		ret = ft_printf("%.0u", 0);
+	else if (test_num == 178)
+		ret = ft_printf("%5.0u", 0);
+	else if (test_num == 179)
+		ret = ft_printf("%500u", 123);
+	else if (test_num == 180)
+		ret = ft_printf("%-500u", 123);
+	else if (test_num == 181)
+		ret = ft_printf("%0500u", 123);
+	else if (test_num == 182)
+		ret = ft_printf("%.500u", 123);
+	else if (test_num == 183)
+		ret = ft_printf("%1000u", 123);
+	else if (test_num == 184)
+		ret = ft_printf("%-1000u", 123);
+	else if (test_num == 185)
+		ret = ft_printf("%01000u", 123);
+	else if (test_num == 186)
+		ret = ft_printf("%.1000u", 123);
+	else if (test_num == 187)
+		ret = ft_printf("%300.150u", 99999);
+	else if (test_num == 188)
+		ret = ft_printf("%-300.150u", 99999);
+	else if (test_num == 189)
+		ret = ft_printf("%300.450u", 99999);
+	else if (test_num == 190)
+		ret = ft_printf("%-300.450u", 99999);
+	else if (test_num == 191)
+		ret = ft_printf("%600.150u", 99999);
+	else if (test_num == 192)
+		ret = ft_printf("%-600.150u", 99999);
+	else if (test_num == 193)
+		ret = ft_printf("%600.450u", 99999);
+	else if (test_num == 194)
+		ret = ft_printf("%-600.450u", 99999);
+	else if (test_num == 195)
+		ret = ft_printf("%u", 4294967295);
+	else if (test_num == 196)
+		ret = ft_printf("%u", 0);
+	else if (test_num == 197)
+		ret = ft_printf("%500u", 10000);
+	else if (test_num == 198)
+		ret = ft_printf("%501u", 10001);
+	else if (test_num == 199)
+		ret = ft_printf("%502u", 10002);
+	else if (test_num == 200)
+		ret = ft_printf("%503u", 10003);
+	else if (test_num == 201)
+		ret = ft_printf("%504u", 10004);
+	else if (test_num == 202)
+		ret = ft_printf("%505u", 10005);
+	else if (test_num == 203)
+		ret = ft_printf("%506u", 10006);
+	else if (test_num == 204)
+		ret = ft_printf("%507u", 10007);
+	else if (test_num == 205)
+		ret = ft_printf("%508u", 10008);
+	else if (test_num == 206)
+		ret = ft_printf("%509u", 10009);
+	else if (test_num == 207)
+		ret = ft_printf("%510u", 10010);
+	else if (test_num == 208)
+		ret = ft_printf("%511u", 10011);
+	else if (test_num == 209)
+		ret = ft_printf("%512u", 10012);
+	else if (test_num == 210)
+		ret = ft_printf("%513u", 10013);
+	else if (test_num == 211)
+		ret = ft_printf("%514u", 10014);
+	else if (test_num == 212)
+		ret = ft_printf("%515u", 10015);
+	else if (test_num == 213)
+		ret = ft_printf("%516u", 10016);
+	else if (test_num == 214)
+		ret = ft_printf("%517u", 10017);
+	else if (test_num == 215)
+		ret = ft_printf("%518u", 10018);
+	else if (test_num == 216)
+		ret = ft_printf("%519u", 10019);
+	else if (test_num == 217)
+		ret = ft_printf("{%500u}", 42);
+	else if (test_num == 218)
+		ret = ft_printf("{%-500u}", 42);
+	else if (test_num == 219)
+		ret = ft_printf("%1000u", 4294967295);
+	else if (test_num == 220)
+		ret = ft_printf("%.500u", 42);
+	else if (test_num == 221)
+		ret = ft_printf("%600.500u", 42);
+	else if (test_num == 222)
+		ret = ft_printf("%-0500u", 42);
+	else if (test_num == 223)
+		ret = ft_printf("%0500.250u", 12345);
+	else if (test_num == 224)
+		ret = ft_printf("%.u", 0);
+	else if (test_num == 225)
+		ret = ft_printf("%.0u", 0);
+	else if (test_num == 226)
+		ret = ft_printf("%5.0u", 0);
+	else if (test_num == 227)
+		ret = ft_printf("%500u", 123);
+	else if (test_num == 228)
+		ret = ft_printf("%-500u", 123);
+	else if (test_num == 229)
+		ret = ft_printf("%0500u", 123);
+	else if (test_num == 230)
+		ret = ft_printf("%.500u", 123);
+	else if (test_num == 231)
+		ret = ft_printf("%1000u", 123);
+	else if (test_num == 232)
+		ret = ft_printf("%-1000u", 123);
+	else if (test_num == 233)
+		ret = ft_printf("%01000u", 123);
+	else if (test_num == 234)
+		ret = ft_printf("%.1000u", 123);
+	else if (test_num == 235)
+		ret = ft_printf("%300.150u", 99999);
+	else if (test_num == 236)
+		ret = ft_printf("%-300.150u", 99999);
+	else if (test_num == 237)
+		ret = ft_printf("%300.450u", 99999);
+	else if (test_num == 238)
+		ret = ft_printf("%-300.450u", 99999);
+	else if (test_num == 239)
+		ret = ft_printf("%600.150u", 99999);
+	else if (test_num == 240)
+		ret = ft_printf("%-600.150u", 99999);
+	else if (test_num == 241)
+		ret = ft_printf("%600.450u", 99999);
+	else if (test_num == 242)
+		ret = ft_printf("%-600.450u", 99999);
+	else if (test_num == 243)
+		ret = ft_printf("%u", 4294967295);
+	else if (test_num == 244)
+		ret = ft_printf("%u", 0);
+	else if (test_num == 245)
+		ret = ft_printf("%500u", 10000);
+	else if (test_num == 246)
+		ret = ft_printf("%501u", 10001);
+	else if (test_num == 247)
+		ret = ft_printf("%502u", 10002);
+	else if (test_num == 248)
+		ret = ft_printf("%503u", 10003);
+	else if (test_num == 249)
+		ret = ft_printf("%504u", 10004);
+	else if (test_num == 250)
+		ret = ft_printf("%505u", 10005);
+	else if (test_num == 251)
+		ret = ft_printf("%506u", 10006);
+	else if (test_num == 252)
+		ret = ft_printf("%507u", 10007);
+	else if (test_num == 253)
+		ret = ft_printf("%508u", 10008);
+	else if (test_num == 254)
+		ret = ft_printf("%509u", 10009);
+	else if (test_num == 255)
+		ret = ft_printf("%510u", 10010);
+	else if (test_num == 256)
+		ret = ft_printf("%511u", 10011);
+	else if (test_num == 257)
+		ret = ft_printf("%512u", 10012);
+	else if (test_num == 258)
+		ret = ft_printf("%513u", 10013);
+	else if (test_num == 259)
+		ret = ft_printf("%514u", 10014);
+	else if (test_num == 260)
+		ret = ft_printf("%515u", 10015);
+	else if (test_num == 261)
+		ret = ft_printf("%516u", 10016);
+	else if (test_num == 262)
+		ret = ft_printf("%517u", 10017);
+	else if (test_num == 263)
+		ret = ft_printf("%518u", 10018);
+	else if (test_num == 264)
+		ret = ft_printf("%519u", 10019);
+	else if (test_num == 265)
+		ret = ft_printf("%520u", 10020);
+	else if (test_num == 266)
+		ret = ft_printf("%521u", 10021);
+	else if (test_num == 267)
+		ret = ft_printf("%522u", 10022);
+	else if (test_num == 268)
+		ret = ft_printf("%523u", 10023);
+	else if (test_num == 269)
+		ret = ft_printf("%524u", 10024);
+	else if (test_num == 270)
+		ret = ft_printf("%525u", 10025);
+	else if (test_num == 271)
+		ret = ft_printf("%526u", 10026);
+	else if (test_num == 272)
+		ret = ft_printf("%527u", 10027);
+	else if (test_num == 273)
+		ret = ft_printf("%528u", 10028);
+	else if (test_num == 274)
+		ret = ft_printf("%529u", 10029);
+printf("\n[RET: %d]", ret);
+	return 0;
+}
