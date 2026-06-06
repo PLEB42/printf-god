@@ -1,0 +1,950 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+Renans-Air
+Darwin 25.5.0 arm64
+$> date
+Sat Jun  6 11:50:47 -03 2026
+$> cc --version
+Apple clang version 21.0.0 (clang-2100.0.123.102)
+Target: arm64-apple-darwin25.5.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+
+$> make all
+make -C libft
+cc -Wall -Wextra -Werror   -c -o ft_isalpha.o ft_isalpha.c
+cc -Wall -Wextra -Werror   -c -o ft_isdigit.o ft_isdigit.c
+cc -Wall -Wextra -Werror   -c -o ft_isalnum.o ft_isalnum.c
+cc -Wall -Wextra -Werror   -c -o ft_isascii.o ft_isascii.c
+cc -Wall -Wextra -Werror   -c -o ft_isprint.o ft_isprint.c
+cc -Wall -Wextra -Werror   -c -o ft_strlen.o ft_strlen.c
+cc -Wall -Wextra -Werror   -c -o ft_memset.o ft_memset.c
+cc -Wall -Wextra -Werror   -c -o ft_bzero.o ft_bzero.c
+cc -Wall -Wextra -Werror   -c -o ft_memcpy.o ft_memcpy.c
+cc -Wall -Wextra -Werror   -c -o ft_memmove.o ft_memmove.c
+cc -Wall -Wextra -Werror   -c -o ft_strlcpy.o ft_strlcpy.c
+cc -Wall -Wextra -Werror   -c -o ft_strlcat.o ft_strlcat.c
+cc -Wall -Wextra -Werror   -c -o ft_toupper.o ft_toupper.c
+cc -Wall -Wextra -Werror   -c -o ft_tolower.o ft_tolower.c
+cc -Wall -Wextra -Werror   -c -o ft_strchr.o ft_strchr.c
+cc -Wall -Wextra -Werror   -c -o ft_strrchr.o ft_strrchr.c
+cc -Wall -Wextra -Werror   -c -o ft_strncmp.o ft_strncmp.c
+cc -Wall -Wextra -Werror   -c -o ft_memchr.o ft_memchr.c
+cc -Wall -Wextra -Werror   -c -o ft_memcmp.o ft_memcmp.c
+cc -Wall -Wextra -Werror   -c -o ft_strnstr.o ft_strnstr.c
+cc -Wall -Wextra -Werror   -c -o ft_atoi.o ft_atoi.c
+cc -Wall -Wextra -Werror   -c -o ft_calloc.o ft_calloc.c
+cc -Wall -Wextra -Werror   -c -o ft_strdup.o ft_strdup.c
+cc -Wall -Wextra -Werror   -c -o ft_substr.o ft_substr.c
+cc -Wall -Wextra -Werror   -c -o ft_strjoin.o ft_strjoin.c
+cc -Wall -Wextra -Werror   -c -o ft_strtrim.o ft_strtrim.c
+cc -Wall -Wextra -Werror   -c -o ft_split.o ft_split.c
+cc -Wall -Wextra -Werror   -c -o ft_itoa.o ft_itoa.c
+cc -Wall -Wextra -Werror   -c -o ft_utoa.o ft_utoa.c
+cc -Wall -Wextra -Werror   -c -o ft_strmapi.o ft_strmapi.c
+cc -Wall -Wextra -Werror   -c -o ft_striteri.o ft_striteri.c
+cc -Wall -Wextra -Werror   -c -o ft_putchar_fd.o ft_putchar_fd.c
+cc -Wall -Wextra -Werror   -c -o ft_putstr_fd.o ft_putstr_fd.c
+cc -Wall -Wextra -Werror   -c -o ft_putendl_fd.o ft_putendl_fd.c
+cc -Wall -Wextra -Werror   -c -o ft_putnbr_fd.o ft_putnbr_fd.c
+cc -Wall -Wextra -Werror   -c -o ft_lstnew.o ft_lstnew.c
+cc -Wall -Wextra -Werror   -c -o ft_lstadd_front.o ft_lstadd_front.c
+cc -Wall -Wextra -Werror   -c -o ft_lstsize.o ft_lstsize.c
+cc -Wall -Wextra -Werror   -c -o ft_lstlast.o ft_lstlast.c
+cc -Wall -Wextra -Werror   -c -o ft_lstadd_back.o ft_lstadd_back.c
+cc -Wall -Wextra -Werror   -c -o ft_lstdelone.o ft_lstdelone.c
+cc -Wall -Wextra -Werror   -c -o ft_lstclear.o ft_lstclear.c
+cc -Wall -Wextra -Werror   -c -o ft_lstiter.o ft_lstiter.c
+cc -Wall -Wextra -Werror   -c -o ft_lstmap.o ft_lstmap.c
+ar rcs libft.a ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_utoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+cc -Wall -Wextra -Werror -I. -c ft_printf.c -o ft_printf.o
+cc -Wall -Wextra -Werror -I. -c mandatory/ft_utils.c -o mandatory/ft_utils.o
+cc -Wall -Wextra -Werror -I. -c mandatory/ft_numbers.c -o mandatory/ft_numbers.o
+cc -Wall -Wextra -Werror -I. -c mandatory/ft_ptr.c -o mandatory/ft_ptr.o
+cp libft/libft.a libftprintf.a
+ar rcs libftprintf.a ft_printf.o mandatory/ft_utils.o mandatory/ft_numbers.o mandatory/ft_ptr.o
+
+$> make clean
+make clean -C libft
+rm -f ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_utoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+rm -f ft_printf.o mandatory/ft_utils.o mandatory/ft_numbers.o mandatory/ft_ptr.o
+
+$> make fclean
+make clean -C libft
+rm -f ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_utoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+rm -f ft_printf.o mandatory/ft_utils.o mandatory/ft_numbers.o mandatory/ft_ptr.o
+make fclean -C libft
+rm -f ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_utoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+rm -f libft.a
+rm -f libftprintf.a
+
+$> make re
+make clean -C libft
+rm -f ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_utoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+rm -f ft_printf.o mandatory/ft_utils.o mandatory/ft_numbers.o mandatory/ft_ptr.o
+make fclean -C libft
+rm -f ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_utoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+rm -f libft.a
+rm -f libftprintf.a
+make -C libft
+cc -Wall -Wextra -Werror   -c -o ft_isalpha.o ft_isalpha.c
+cc -Wall -Wextra -Werror   -c -o ft_isdigit.o ft_isdigit.c
+cc -Wall -Wextra -Werror   -c -o ft_isalnum.o ft_isalnum.c
+cc -Wall -Wextra -Werror   -c -o ft_isascii.o ft_isascii.c
+cc -Wall -Wextra -Werror   -c -o ft_isprint.o ft_isprint.c
+cc -Wall -Wextra -Werror   -c -o ft_strlen.o ft_strlen.c
+cc -Wall -Wextra -Werror   -c -o ft_memset.o ft_memset.c
+cc -Wall -Wextra -Werror   -c -o ft_bzero.o ft_bzero.c
+cc -Wall -Wextra -Werror   -c -o ft_memcpy.o ft_memcpy.c
+cc -Wall -Wextra -Werror   -c -o ft_memmove.o ft_memmove.c
+cc -Wall -Wextra -Werror   -c -o ft_strlcpy.o ft_strlcpy.c
+cc -Wall -Wextra -Werror   -c -o ft_strlcat.o ft_strlcat.c
+cc -Wall -Wextra -Werror   -c -o ft_toupper.o ft_toupper.c
+cc -Wall -Wextra -Werror   -c -o ft_tolower.o ft_tolower.c
+cc -Wall -Wextra -Werror   -c -o ft_strchr.o ft_strchr.c
+cc -Wall -Wextra -Werror   -c -o ft_strrchr.o ft_strrchr.c
+cc -Wall -Wextra -Werror   -c -o ft_strncmp.o ft_strncmp.c
+cc -Wall -Wextra -Werror   -c -o ft_memchr.o ft_memchr.c
+cc -Wall -Wextra -Werror   -c -o ft_memcmp.o ft_memcmp.c
+cc -Wall -Wextra -Werror   -c -o ft_strnstr.o ft_strnstr.c
+cc -Wall -Wextra -Werror   -c -o ft_atoi.o ft_atoi.c
+cc -Wall -Wextra -Werror   -c -o ft_calloc.o ft_calloc.c
+cc -Wall -Wextra -Werror   -c -o ft_strdup.o ft_strdup.c
+cc -Wall -Wextra -Werror   -c -o ft_substr.o ft_substr.c
+cc -Wall -Wextra -Werror   -c -o ft_strjoin.o ft_strjoin.c
+cc -Wall -Wextra -Werror   -c -o ft_strtrim.o ft_strtrim.c
+cc -Wall -Wextra -Werror   -c -o ft_split.o ft_split.c
+cc -Wall -Wextra -Werror   -c -o ft_itoa.o ft_itoa.c
+cc -Wall -Wextra -Werror   -c -o ft_utoa.o ft_utoa.c
+cc -Wall -Wextra -Werror   -c -o ft_strmapi.o ft_strmapi.c
+cc -Wall -Wextra -Werror   -c -o ft_striteri.o ft_striteri.c
+cc -Wall -Wextra -Werror   -c -o ft_putchar_fd.o ft_putchar_fd.c
+cc -Wall -Wextra -Werror   -c -o ft_putstr_fd.o ft_putstr_fd.c
+cc -Wall -Wextra -Werror   -c -o ft_putendl_fd.o ft_putendl_fd.c
+cc -Wall -Wextra -Werror   -c -o ft_putnbr_fd.o ft_putnbr_fd.c
+cc -Wall -Wextra -Werror   -c -o ft_lstnew.o ft_lstnew.c
+cc -Wall -Wextra -Werror   -c -o ft_lstadd_front.o ft_lstadd_front.c
+cc -Wall -Wextra -Werror   -c -o ft_lstsize.o ft_lstsize.c
+cc -Wall -Wextra -Werror   -c -o ft_lstlast.o ft_lstlast.c
+cc -Wall -Wextra -Werror   -c -o ft_lstadd_back.o ft_lstadd_back.c
+cc -Wall -Wextra -Werror   -c -o ft_lstdelone.o ft_lstdelone.c
+cc -Wall -Wextra -Werror   -c -o ft_lstclear.o ft_lstclear.c
+cc -Wall -Wextra -Werror   -c -o ft_lstiter.o ft_lstiter.c
+cc -Wall -Wextra -Werror   -c -o ft_lstmap.o ft_lstmap.c
+ar rcs libft.a ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_utoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+cc -Wall -Wextra -Werror -I. -c ft_printf.c -o ft_printf.o
+cc -Wall -Wextra -Werror -I. -c mandatory/ft_utils.c -o mandatory/ft_utils.o
+cc -Wall -Wextra -Werror -I. -c mandatory/ft_numbers.c -o mandatory/ft_numbers.o
+cc -Wall -Wextra -Werror -I. -c mandatory/ft_ptr.c -o mandatory/ft_ptr.o
+cp libft/libft.a libftprintf.a
+ar rcs libftprintf.a ft_printf.o mandatory/ft_utils.o mandatory/ft_numbers.o mandatory/ft_ptr.o
+make: Nothing to be done for `all'.
+
+= Mandatory_functions ==========================================================
+$> norminette /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c | grep -E '(Error|Warning)'
+ft_printf.c: Error!
+Error: TOO_MANY_LINES       (line:  65, col:   1):	Function has more than 25 lines
+Norme check failed for /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c
+$> cc -Wextra -Wall -Werror -g3 main.c libftprintf.a -o user_exe
+
+= ft_printf_c ================================================================
+
+[TEST 001]: 	if (test_num == 1) ft_printf("%c", '0');
+	else if (test_num == 2) ft_printf(" %c ", '0');
+   Result: OK ✅
+
+[TEST 002]: 	else if (test_num == 2) ft_printf(" %c ", '0');
+	else if (test_num == 3) ft_printf(" %c", '0' - 256);
+   Result: OK ✅
+
+[TEST 003]: 	else if (test_num == 3) ft_printf(" %c", '0' - 256);
+	else if (test_num == 4) ft_printf("%c ", '0' + 256);
+   Result: OK ✅
+
+[TEST 004]: 	else if (test_num == 4) ft_printf("%c ", '0' + 256);
+	else if (test_num == 5) ft_printf(" %c %c %c ", '0', 0, '1');
+   Result: OK ✅
+
+[TEST 005]: 	else if (test_num == 5) ft_printf(" %c %c %c ", '0', 0, '1');
+	else if (test_num == 6) ft_printf(" %c %c %c ", ' ', ' ', ' ');
+   Result: OK ✅
+
+[TEST 006]: 	else if (test_num == 6) ft_printf(" %c %c %c ", ' ', ' ', ' ');
+	else if (test_num == 7) ft_printf(" %c %c %c ", '1', '2', '3');
+   Result: OK ✅
+
+[TEST 007]: 	else if (test_num == 7) ft_printf(" %c %c %c ", '1', '2', '3');
+	else if (test_num == 8) ft_printf(" %c %c %c ", '2', '1', 0);
+   Result: OK ✅
+
+[TEST 008]: 	else if (test_num == 8) ft_printf(" %c %c %c ", '2', '1', 0);
+	else if (test_num == 9) ft_printf(" %c %c %c ", 0, '1', '2');
+   Result: OK ✅
+
+[TEST 009]: 	else if (test_num == 9) ft_printf(" %c %c %c ", 0, '1', '2');
+	else if (test_num == 10) ft_printf("%c", 'c');
+   Result: OK ✅
+$> norminette /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c | grep -E '(Error|Warning)'
+ft_printf.c: Error!
+Error: TOO_MANY_LINES       (line:  65, col:   1):	Function has more than 25 lines
+Norme check failed for /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c
+$> cc -Wextra -Wall -Werror -g3 main.c libftprintf.a -o user_exe
+
+= ft_printf_s ================================================================
+
+[TEST 001]: 	if (test_num == 1) ft_printf("%s", "");
+	else if (test_num == 2) ft_printf(" %s", "");
+   Result: OK ✅
+
+[TEST 002]: 	else if (test_num == 2) ft_printf(" %s", "");
+	else if (test_num == 3) ft_printf("%s ", "");
+   Result: OK ✅
+
+[TEST 003]: 	else if (test_num == 3) ft_printf("%s ", "");
+	else if (test_num == 4) ft_printf(" %s ", "");
+   Result: OK ✅
+
+[TEST 004]: 	else if (test_num == 4) ft_printf(" %s ", "");
+	else if (test_num == 5) ft_printf(" %s ", "-");
+   Result: OK ✅
+
+[TEST 005]: 	else if (test_num == 5) ft_printf(" %s ", "-");
+	else if (test_num == 6) ft_printf(" %s %s ", "", "-");
+   Result: OK ✅
+
+[TEST 006]: 	else if (test_num == 6) ft_printf(" %s %s ", "", "-");
+	else if (test_num == 7) ft_printf(" %s %s ", " - ", "");
+   Result: OK ✅
+
+[TEST 007]: 	else if (test_num == 7) ft_printf(" %s %s ", " - ", "");
+	else if (test_num == 8) ft_printf(" %s %s %s %s %s", " - ", "", "4", "", s2);
+   Result: OK ✅
+
+[TEST 008]: 	else if (test_num == 8) ft_printf(" %s %s %s %s %s", " - ", "", "4", "", s2);
+	else if (test_num == 9) ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
+   Result: OK ✅
+
+[TEST 009]: 	else if (test_num == 9) ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
+	else if (test_num == 10) ft_printf(" NULL %s NULL ", NULL);
+   Result: OK ✅
+
+[TEST 010]: 	else if (test_num == 10) ft_printf(" NULL %s NULL ", NULL);
+	else if (test_num == 11) ft_printf("%s", "abc");
+   Result: KO ❌
+   -------------------------------------------------
+   System printf : | NULL (null) NULL $
+[RET: 18]   Your ft_printf: | NULL  NULL $
+[RET: 12]   -------------------------------------------------
+$> norminette /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c | grep -E '(Error|Warning)'
+ft_printf.c: Error!
+Error: TOO_MANY_LINES       (line:  65, col:   1):	Function has more than 25 lines
+Norme check failed for /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c
+$> cc -Wextra -Wall -Werror -g3 main.c libftprintf.a -o user_exe
+
+= ft_printf_p ================================================================
+
+[TEST 001]: 	if (test_num == 1) ft_printf(" %p ", -1);
+	else if (test_num == 2) ft_printf(" %p ", 1);
+   Result: OK ✅
+
+[TEST 002]: 	else if (test_num == 2) ft_printf(" %p ", 1);
+	else if (test_num == 3) ft_printf(" %p ", 15);
+   Result: OK ✅
+
+[TEST 003]: 	else if (test_num == 3) ft_printf(" %p ", 15);
+	else if (test_num == 4) ft_printf(" %p ", 16);
+   Result: OK ✅
+
+[TEST 004]: 	else if (test_num == 4) ft_printf(" %p ", 16);
+	else if (test_num == 5) ft_printf(" %p ", 17);
+   Result: OK ✅
+
+[TEST 005]: 	else if (test_num == 5) ft_printf(" %p ", 17);
+	else if (test_num == 6) ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
+   Result: OK ✅
+
+[TEST 006]: 	else if (test_num == 6) ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
+	else if (test_num == 7) ft_printf(" %p %p ", INT_MIN, INT_MAX);
+   Result: OK ✅
+
+[TEST 007]: 	else if (test_num == 7) ft_printf(" %p %p ", INT_MIN, INT_MAX);
+	else if (test_num == 8) ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
+   Result: OK ✅
+
+[TEST 008]: 	else if (test_num == 8) ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
+	else if (test_num == 9) ft_printf(" %p %p ", 0, 0);
+   Result: OK ✅
+
+[TEST 009]: 	else if (test_num == 9) ft_printf(" %p %p ", 0, 0);
+	else if (test_num == 10) ft_printf("%p", &i);
+   Result: KO ❌
+   -------------------------------------------------
+   System printf : | 0x0 0x0 $
+[RET: 9]   Your ft_printf: | (nil) (nil) $
+[RET: 13]   -------------------------------------------------
+$> norminette /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c | grep -E '(Error|Warning)'
+ft_printf.c: Error!
+Error: TOO_MANY_LINES       (line:  65, col:   1):	Function has more than 25 lines
+Norme check failed for /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c
+$> cc -Wextra -Wall -Werror -g3 main.c libftprintf.a -o user_exe
+
+= ft_printf_d ================================================================
+
+[TEST 001]: 	if (test_num == 1) ft_printf(" %d ", 0);
+	else if (test_num == 2) ft_printf(" %d ", -1);
+   Result: OK ✅
+
+[TEST 002]: 	else if (test_num == 2) ft_printf(" %d ", -1);
+	else if (test_num == 3) ft_printf(" %d ", 1);
+   Result: OK ✅
+
+[TEST 003]: 	else if (test_num == 3) ft_printf(" %d ", 1);
+	else if (test_num == 4) ft_printf(" %d ", 9);
+   Result: OK ✅
+
+[TEST 004]: 	else if (test_num == 4) ft_printf(" %d ", 9);
+	else if (test_num == 5) ft_printf(" %d ", 10);
+   Result: OK ✅
+
+[TEST 005]: 	else if (test_num == 5) ft_printf(" %d ", 10);
+	else if (test_num == 6) ft_printf(" %d ", 11);
+   Result: OK ✅
+
+[TEST 006]: 	else if (test_num == 6) ft_printf(" %d ", 11);
+	else if (test_num == 7) ft_printf(" %d ", 15);
+   Result: OK ✅
+
+[TEST 007]: 	else if (test_num == 7) ft_printf(" %d ", 15);
+	else if (test_num == 8) ft_printf(" %d ", 16);
+   Result: OK ✅
+
+[TEST 008]: 	else if (test_num == 8) ft_printf(" %d ", 16);
+	else if (test_num == 9) ft_printf(" %d ", 17);
+   Result: OK ✅
+
+[TEST 009]: 	else if (test_num == 9) ft_printf(" %d ", 17);
+	else if (test_num == 10) ft_printf(" %d ", 99);
+   Result: OK ✅
+
+[TEST 010]: 	else if (test_num == 10) ft_printf(" %d ", 99);
+	else if (test_num == 11) ft_printf(" %d ", 100);
+   Result: OK ✅
+
+[TEST 011]: 	else if (test_num == 11) ft_printf(" %d ", 100);
+	else if (test_num == 12) ft_printf(" %d ", 101);
+   Result: OK ✅
+
+[TEST 012]: 	else if (test_num == 12) ft_printf(" %d ", 101);
+	else if (test_num == 13) ft_printf(" %d ", -9);
+   Result: OK ✅
+
+[TEST 013]: 	else if (test_num == 13) ft_printf(" %d ", -9);
+	else if (test_num == 14) ft_printf(" %d ", -10);
+   Result: OK ✅
+
+[TEST 014]: 	else if (test_num == 14) ft_printf(" %d ", -10);
+	else if (test_num == 15) ft_printf(" %d ", -11);
+   Result: OK ✅
+
+[TEST 015]: 	else if (test_num == 15) ft_printf(" %d ", -11);
+	else if (test_num == 16) ft_printf(" %d ", -14);
+   Result: OK ✅
+
+[TEST 016]: 	else if (test_num == 16) ft_printf(" %d ", -14);
+	else if (test_num == 17) ft_printf(" %d ", -15);
+   Result: OK ✅
+
+[TEST 017]: 	else if (test_num == 17) ft_printf(" %d ", -15);
+	else if (test_num == 18) ft_printf(" %d ", -16);
+   Result: OK ✅
+
+[TEST 018]: 	else if (test_num == 18) ft_printf(" %d ", -16);
+	else if (test_num == 19) ft_printf(" %d ", -99);
+   Result: OK ✅
+
+[TEST 019]: 	else if (test_num == 19) ft_printf(" %d ", -99);
+	else if (test_num == 20) ft_printf(" %d ", -100);
+   Result: OK ✅
+
+[TEST 020]: 	else if (test_num == 20) ft_printf(" %d ", -100);
+	else if (test_num == 21) ft_printf(" %d ", -101);
+   Result: OK ✅
+
+[TEST 021]: 	else if (test_num == 21) ft_printf(" %d ", -101);
+	else if (test_num == 22) ft_printf(" %d ", INT_MAX);
+   Result: OK ✅
+
+[TEST 022]: 	else if (test_num == 22) ft_printf(" %d ", INT_MAX);
+	else if (test_num == 23) ft_printf(" %d ", INT_MIN);
+   Result: OK ✅
+
+[TEST 023]: 	else if (test_num == 23) ft_printf(" %d ", INT_MIN);
+	else if (test_num == 24) ft_printf(" %d ", LONG_MAX);
+   Result: OK ✅
+
+[TEST 024]: 	else if (test_num == 24) ft_printf(" %d ", LONG_MAX);
+	else if (test_num == 25) ft_printf(" %d ", LONG_MIN);
+   Result: OK ✅
+
+[TEST 025]: 	else if (test_num == 25) ft_printf(" %d ", LONG_MIN);
+	else if (test_num == 26) ft_printf(" %d ", UINT_MAX);
+   Result: OK ✅
+
+[TEST 026]: 	else if (test_num == 26) ft_printf(" %d ", UINT_MAX);
+	else if (test_num == 27) ft_printf(" %d ", ULONG_MAX);
+   Result: OK ✅
+
+[TEST 027]: 	else if (test_num == 27) ft_printf(" %d ", ULONG_MAX);
+	else if (test_num == 28) ft_printf(" %d ", 9223372036854775807LL);
+   Result: OK ✅
+
+[TEST 028]: 	else if (test_num == 28) ft_printf(" %d ", 9223372036854775807LL);
+	else if (test_num == 29) ft_printf(" %d %d %d %d %d %d %d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+   Result: OK ✅
+
+[TEST 029]: 	else if (test_num == 29) ft_printf(" %d %d %d %d %d %d %d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	else if (test_num == 30) ft_printf("%d", 42);
+   Result: OK ✅
+$> norminette /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c | grep -E '(Error|Warning)'
+ft_printf.c: Error!
+Error: TOO_MANY_LINES       (line:  65, col:   1):	Function has more than 25 lines
+Norme check failed for /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c
+$> cc -Wextra -Wall -Werror -g3 main.c libftprintf.a -o user_exe
+
+= ft_printf_i ================================================================
+
+[TEST 001]: 	if (test_num == 1) ft_printf(" %i ", 0);
+	else if (test_num == 2) ft_printf(" %i ", -1);
+   Result: OK ✅
+
+[TEST 002]: 	else if (test_num == 2) ft_printf(" %i ", -1);
+	else if (test_num == 3) ft_printf(" %i ", 1);
+   Result: OK ✅
+
+[TEST 003]: 	else if (test_num == 3) ft_printf(" %i ", 1);
+	else if (test_num == 4) ft_printf(" %i ", 9);
+   Result: OK ✅
+
+[TEST 004]: 	else if (test_num == 4) ft_printf(" %i ", 9);
+	else if (test_num == 5) ft_printf(" %i ", 10);
+   Result: OK ✅
+
+[TEST 005]: 	else if (test_num == 5) ft_printf(" %i ", 10);
+	else if (test_num == 6) ft_printf(" %i ", 11);
+   Result: OK ✅
+
+[TEST 006]: 	else if (test_num == 6) ft_printf(" %i ", 11);
+	else if (test_num == 7) ft_printf(" %i ", 15);
+   Result: OK ✅
+
+[TEST 007]: 	else if (test_num == 7) ft_printf(" %i ", 15);
+	else if (test_num == 8) ft_printf(" %i ", 16);
+   Result: OK ✅
+
+[TEST 008]: 	else if (test_num == 8) ft_printf(" %i ", 16);
+	else if (test_num == 9) ft_printf(" %i ", 17);
+   Result: OK ✅
+
+[TEST 009]: 	else if (test_num == 9) ft_printf(" %i ", 17);
+	else if (test_num == 10) ft_printf(" %i ", 99);
+   Result: OK ✅
+
+[TEST 010]: 	else if (test_num == 10) ft_printf(" %i ", 99);
+	else if (test_num == 11) ft_printf(" %i ", 100);
+   Result: OK ✅
+
+[TEST 011]: 	else if (test_num == 11) ft_printf(" %i ", 100);
+	else if (test_num == 12) ft_printf(" %i ", 101);
+   Result: OK ✅
+
+[TEST 012]: 	else if (test_num == 12) ft_printf(" %i ", 101);
+	else if (test_num == 13) ft_printf(" %i ", -9);
+   Result: OK ✅
+
+[TEST 013]: 	else if (test_num == 13) ft_printf(" %i ", -9);
+	else if (test_num == 14) ft_printf(" %i ", -10);
+   Result: OK ✅
+
+[TEST 014]: 	else if (test_num == 14) ft_printf(" %i ", -10);
+	else if (test_num == 15) ft_printf(" %i ", -11);
+   Result: OK ✅
+
+[TEST 015]: 	else if (test_num == 15) ft_printf(" %i ", -11);
+	else if (test_num == 16) ft_printf(" %i ", -14);
+   Result: OK ✅
+
+[TEST 016]: 	else if (test_num == 16) ft_printf(" %i ", -14);
+	else if (test_num == 17) ft_printf(" %i ", -15);
+   Result: OK ✅
+
+[TEST 017]: 	else if (test_num == 17) ft_printf(" %i ", -15);
+	else if (test_num == 18) ft_printf(" %i ", -16);
+   Result: OK ✅
+
+[TEST 018]: 	else if (test_num == 18) ft_printf(" %i ", -16);
+	else if (test_num == 19) ft_printf(" %i ", -99);
+   Result: OK ✅
+
+[TEST 019]: 	else if (test_num == 19) ft_printf(" %i ", -99);
+	else if (test_num == 20) ft_printf(" %i ", -100);
+   Result: OK ✅
+
+[TEST 020]: 	else if (test_num == 20) ft_printf(" %i ", -100);
+	else if (test_num == 21) ft_printf(" %i ", -101);
+   Result: OK ✅
+
+[TEST 021]: 	else if (test_num == 21) ft_printf(" %i ", -101);
+	else if (test_num == 22) ft_printf(" %i ", INT_MAX);
+   Result: OK ✅
+
+[TEST 022]: 	else if (test_num == 22) ft_printf(" %i ", INT_MAX);
+	else if (test_num == 23) ft_printf(" %i ", INT_MIN);
+   Result: OK ✅
+
+[TEST 023]: 	else if (test_num == 23) ft_printf(" %i ", INT_MIN);
+	else if (test_num == 24) ft_printf(" %i ", LONG_MAX);
+   Result: OK ✅
+
+[TEST 024]: 	else if (test_num == 24) ft_printf(" %i ", LONG_MAX);
+	else if (test_num == 25) ft_printf(" %i ", LONG_MIN);
+   Result: OK ✅
+
+[TEST 025]: 	else if (test_num == 25) ft_printf(" %i ", LONG_MIN);
+	else if (test_num == 26) ft_printf(" %i ", UINT_MAX);
+   Result: OK ✅
+
+[TEST 026]: 	else if (test_num == 26) ft_printf(" %i ", UINT_MAX);
+	else if (test_num == 27) ft_printf(" %i ", ULONG_MAX);
+   Result: OK ✅
+
+[TEST 027]: 	else if (test_num == 27) ft_printf(" %i ", ULONG_MAX);
+	else if (test_num == 28) ft_printf(" %i ", 9223372036854775807LL);
+   Result: OK ✅
+
+[TEST 028]: 	else if (test_num == 28) ft_printf(" %i ", 9223372036854775807LL);
+	else if (test_num == 29) ft_printf(" %i %i %i %i %i %i %i", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+   Result: OK ✅
+
+[TEST 029]: 	else if (test_num == 29) ft_printf(" %i %i %i %i %i %i %i", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	else if (test_num == 30) ft_printf("%i", 42);
+   Result: OK ✅
+$> norminette /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c | grep -E '(Error|Warning)'
+ft_printf.c: Error!
+Error: TOO_MANY_LINES       (line:  65, col:   1):	Function has more than 25 lines
+Norme check failed for /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c
+$> cc -Wextra -Wall -Werror -g3 main.c libftprintf.a -o user_exe
+
+= ft_printf_u ================================================================
+
+[TEST 001]: 	if (test_num == 1) ft_printf(" %u ", 0);
+	else if (test_num == 2) ft_printf(" %u ", -1);
+   Result: OK ✅
+
+[TEST 002]: 	else if (test_num == 2) ft_printf(" %u ", -1);
+	else if (test_num == 3) ft_printf(" %u ", 1);
+   Result: OK ✅
+
+[TEST 003]: 	else if (test_num == 3) ft_printf(" %u ", 1);
+	else if (test_num == 4) ft_printf(" %u ", 9);
+   Result: OK ✅
+
+[TEST 004]: 	else if (test_num == 4) ft_printf(" %u ", 9);
+	else if (test_num == 5) ft_printf(" %u ", 10);
+   Result: OK ✅
+
+[TEST 005]: 	else if (test_num == 5) ft_printf(" %u ", 10);
+	else if (test_num == 6) ft_printf(" %u ", 11);
+   Result: OK ✅
+
+[TEST 006]: 	else if (test_num == 6) ft_printf(" %u ", 11);
+	else if (test_num == 7) ft_printf(" %u ", 15);
+   Result: OK ✅
+
+[TEST 007]: 	else if (test_num == 7) ft_printf(" %u ", 15);
+	else if (test_num == 8) ft_printf(" %u ", 16);
+   Result: OK ✅
+
+[TEST 008]: 	else if (test_num == 8) ft_printf(" %u ", 16);
+	else if (test_num == 9) ft_printf(" %u ", 17);
+   Result: OK ✅
+
+[TEST 009]: 	else if (test_num == 9) ft_printf(" %u ", 17);
+	else if (test_num == 10) ft_printf(" %u ", 99);
+   Result: OK ✅
+
+[TEST 010]: 	else if (test_num == 10) ft_printf(" %u ", 99);
+	else if (test_num == 11) ft_printf(" %u ", 100);
+   Result: OK ✅
+
+[TEST 011]: 	else if (test_num == 11) ft_printf(" %u ", 100);
+	else if (test_num == 12) ft_printf(" %u ", 101);
+   Result: OK ✅
+
+[TEST 012]: 	else if (test_num == 12) ft_printf(" %u ", 101);
+	else if (test_num == 13) ft_printf(" %u ", -9);
+   Result: OK ✅
+
+[TEST 013]: 	else if (test_num == 13) ft_printf(" %u ", -9);
+	else if (test_num == 14) ft_printf(" %u ", -10);
+   Result: OK ✅
+
+[TEST 014]: 	else if (test_num == 14) ft_printf(" %u ", -10);
+	else if (test_num == 15) ft_printf(" %u ", -11);
+   Result: OK ✅
+
+[TEST 015]: 	else if (test_num == 15) ft_printf(" %u ", -11);
+	else if (test_num == 16) ft_printf(" %u ", -14);
+   Result: OK ✅
+
+[TEST 016]: 	else if (test_num == 16) ft_printf(" %u ", -14);
+	else if (test_num == 17) ft_printf(" %u ", -15);
+   Result: OK ✅
+
+[TEST 017]: 	else if (test_num == 17) ft_printf(" %u ", -15);
+	else if (test_num == 18) ft_printf(" %u ", -16);
+   Result: OK ✅
+
+[TEST 018]: 	else if (test_num == 18) ft_printf(" %u ", -16);
+	else if (test_num == 19) ft_printf(" %u ", -99);
+   Result: OK ✅
+
+[TEST 019]: 	else if (test_num == 19) ft_printf(" %u ", -99);
+	else if (test_num == 20) ft_printf(" %u ", -100);
+   Result: OK ✅
+
+[TEST 020]: 	else if (test_num == 20) ft_printf(" %u ", -100);
+	else if (test_num == 21) ft_printf(" %u ", -101);
+   Result: OK ✅
+
+[TEST 021]: 	else if (test_num == 21) ft_printf(" %u ", -101);
+	else if (test_num == 22) ft_printf(" %u ", INT_MAX);
+   Result: OK ✅
+
+[TEST 022]: 	else if (test_num == 22) ft_printf(" %u ", INT_MAX);
+	else if (test_num == 23) ft_printf(" %u ", INT_MIN);
+   Result: OK ✅
+
+[TEST 023]: 	else if (test_num == 23) ft_printf(" %u ", INT_MIN);
+	else if (test_num == 24) ft_printf(" %u ", LONG_MAX);
+   Result: OK ✅
+
+[TEST 024]: 	else if (test_num == 24) ft_printf(" %u ", LONG_MAX);
+	else if (test_num == 25) ft_printf(" %u ", LONG_MIN);
+   Result: OK ✅
+
+[TEST 025]: 	else if (test_num == 25) ft_printf(" %u ", LONG_MIN);
+	else if (test_num == 26) ft_printf(" %u ", UINT_MAX);
+   Result: OK ✅
+
+[TEST 026]: 	else if (test_num == 26) ft_printf(" %u ", UINT_MAX);
+	else if (test_num == 27) ft_printf(" %u ", ULONG_MAX);
+   Result: OK ✅
+
+[TEST 027]: 	else if (test_num == 27) ft_printf(" %u ", ULONG_MAX);
+	else if (test_num == 28) ft_printf(" %u ", 9223372036854775807LL);
+   Result: OK ✅
+
+[TEST 028]: 	else if (test_num == 28) ft_printf(" %u ", 9223372036854775807LL);
+	else if (test_num == 29) ft_printf(" %u %u %u %u %u %u %u", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+   Result: OK ✅
+
+[TEST 029]: 	else if (test_num == 29) ft_printf(" %u %u %u %u %u %u %u", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	else if (test_num == 30) ft_printf("%u", 42);
+   Result: OK ✅
+$> norminette /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c | grep -E '(Error|Warning)'
+ft_printf.c: Error!
+Error: TOO_MANY_LINES       (line:  65, col:   1):	Function has more than 25 lines
+Norme check failed for /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c
+$> cc -Wextra -Wall -Werror -g3 main.c libftprintf.a -o user_exe
+
+= ft_printf_x ================================================================
+
+[TEST 001]: 	if (test_num == 1) ft_printf(" %x ", 0);
+	else if (test_num == 2) ft_printf(" %x ", -1);
+   Result: OK ✅
+
+[TEST 002]: 	else if (test_num == 2) ft_printf(" %x ", -1);
+	else if (test_num == 3) ft_printf(" %x ", 1);
+   Result: OK ✅
+
+[TEST 003]: 	else if (test_num == 3) ft_printf(" %x ", 1);
+	else if (test_num == 4) ft_printf(" %x ", 9);
+   Result: OK ✅
+
+[TEST 004]: 	else if (test_num == 4) ft_printf(" %x ", 9);
+	else if (test_num == 5) ft_printf(" %x ", 10);
+   Result: OK ✅
+
+[TEST 005]: 	else if (test_num == 5) ft_printf(" %x ", 10);
+	else if (test_num == 6) ft_printf(" %x ", 11);
+   Result: OK ✅
+
+[TEST 006]: 	else if (test_num == 6) ft_printf(" %x ", 11);
+	else if (test_num == 7) ft_printf(" %x ", 15);
+   Result: OK ✅
+
+[TEST 007]: 	else if (test_num == 7) ft_printf(" %x ", 15);
+	else if (test_num == 8) ft_printf(" %x ", 16);
+   Result: OK ✅
+
+[TEST 008]: 	else if (test_num == 8) ft_printf(" %x ", 16);
+	else if (test_num == 9) ft_printf(" %x ", 17);
+   Result: OK ✅
+
+[TEST 009]: 	else if (test_num == 9) ft_printf(" %x ", 17);
+	else if (test_num == 10) ft_printf(" %x ", 99);
+   Result: OK ✅
+
+[TEST 010]: 	else if (test_num == 10) ft_printf(" %x ", 99);
+	else if (test_num == 11) ft_printf(" %x ", 100);
+   Result: OK ✅
+
+[TEST 011]: 	else if (test_num == 11) ft_printf(" %x ", 100);
+	else if (test_num == 12) ft_printf(" %x ", 101);
+   Result: OK ✅
+
+[TEST 012]: 	else if (test_num == 12) ft_printf(" %x ", 101);
+	else if (test_num == 13) ft_printf(" %x ", -9);
+   Result: OK ✅
+
+[TEST 013]: 	else if (test_num == 13) ft_printf(" %x ", -9);
+	else if (test_num == 14) ft_printf(" %x ", -10);
+   Result: OK ✅
+
+[TEST 014]: 	else if (test_num == 14) ft_printf(" %x ", -10);
+	else if (test_num == 15) ft_printf(" %x ", -11);
+   Result: OK ✅
+
+[TEST 015]: 	else if (test_num == 15) ft_printf(" %x ", -11);
+	else if (test_num == 16) ft_printf(" %x ", -14);
+   Result: OK ✅
+
+[TEST 016]: 	else if (test_num == 16) ft_printf(" %x ", -14);
+	else if (test_num == 17) ft_printf(" %x ", -15);
+   Result: OK ✅
+
+[TEST 017]: 	else if (test_num == 17) ft_printf(" %x ", -15);
+	else if (test_num == 18) ft_printf(" %x ", -16);
+   Result: OK ✅
+
+[TEST 018]: 	else if (test_num == 18) ft_printf(" %x ", -16);
+	else if (test_num == 19) ft_printf(" %x ", -99);
+   Result: OK ✅
+
+[TEST 019]: 	else if (test_num == 19) ft_printf(" %x ", -99);
+	else if (test_num == 20) ft_printf(" %x ", -100);
+   Result: OK ✅
+
+[TEST 020]: 	else if (test_num == 20) ft_printf(" %x ", -100);
+	else if (test_num == 21) ft_printf(" %x ", -101);
+   Result: OK ✅
+
+[TEST 021]: 	else if (test_num == 21) ft_printf(" %x ", -101);
+	else if (test_num == 22) ft_printf(" %x ", INT_MAX);
+   Result: OK ✅
+
+[TEST 022]: 	else if (test_num == 22) ft_printf(" %x ", INT_MAX);
+	else if (test_num == 23) ft_printf(" %x ", INT_MIN);
+   Result: OK ✅
+
+[TEST 023]: 	else if (test_num == 23) ft_printf(" %x ", INT_MIN);
+	else if (test_num == 24) ft_printf(" %x ", LONG_MAX);
+   Result: OK ✅
+
+[TEST 024]: 	else if (test_num == 24) ft_printf(" %x ", LONG_MAX);
+	else if (test_num == 25) ft_printf(" %x ", LONG_MIN);
+   Result: OK ✅
+
+[TEST 025]: 	else if (test_num == 25) ft_printf(" %x ", LONG_MIN);
+	else if (test_num == 26) ft_printf(" %x ", UINT_MAX);
+   Result: OK ✅
+
+[TEST 026]: 	else if (test_num == 26) ft_printf(" %x ", UINT_MAX);
+	else if (test_num == 27) ft_printf(" %x ", ULONG_MAX);
+   Result: OK ✅
+
+[TEST 027]: 	else if (test_num == 27) ft_printf(" %x ", ULONG_MAX);
+	else if (test_num == 28) ft_printf(" %x ", 9223372036854775807LL);
+   Result: OK ✅
+
+[TEST 028]: 	else if (test_num == 28) ft_printf(" %x ", 9223372036854775807LL);
+	else if (test_num == 29) ft_printf(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+   Result: OK ✅
+
+[TEST 029]: 	else if (test_num == 29) ft_printf(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	else if (test_num == 30) ft_printf(" %x ", 42);
+   Result: OK ✅
+
+[TEST 030]: 	else if (test_num == 30) ft_printf(" %x ", 42);
+	else if (test_num == 31) ft_printf(" %x ", -42);
+   Result: OK ✅
+
+[TEST 031]: 	else if (test_num == 31) ft_printf(" %x ", -42);
+	else if (test_num == 32) ft_printf("%x", 42);
+   Result: OK ✅
+$> norminette /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c | grep -E '(Error|Warning)'
+ft_printf.c: Error!
+Error: TOO_MANY_LINES       (line:  65, col:   1):	Function has more than 25 lines
+Norme check failed for /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c
+$> cc -Wextra -Wall -Werror -g3 main.c libftprintf.a -o user_exe
+
+= ft_printf_X_upper ================================================================
+
+[TEST 001]: 	if (test_num == 1) ft_printf(" %X ", 0);
+	else if (test_num == 2) ft_printf(" %X ", -1);
+   Result: OK ✅
+
+[TEST 002]: 	else if (test_num == 2) ft_printf(" %X ", -1);
+	else if (test_num == 3) ft_printf(" %X ", 1);
+   Result: OK ✅
+
+[TEST 003]: 	else if (test_num == 3) ft_printf(" %X ", 1);
+	else if (test_num == 4) ft_printf(" %X ", 9);
+   Result: OK ✅
+
+[TEST 004]: 	else if (test_num == 4) ft_printf(" %X ", 9);
+	else if (test_num == 5) ft_printf(" %X ", 10);
+   Result: OK ✅
+
+[TEST 005]: 	else if (test_num == 5) ft_printf(" %X ", 10);
+	else if (test_num == 6) ft_printf(" %X ", 11);
+   Result: OK ✅
+
+[TEST 006]: 	else if (test_num == 6) ft_printf(" %X ", 11);
+	else if (test_num == 7) ft_printf(" %X ", 15);
+   Result: OK ✅
+
+[TEST 007]: 	else if (test_num == 7) ft_printf(" %X ", 15);
+	else if (test_num == 8) ft_printf(" %X ", 16);
+   Result: OK ✅
+
+[TEST 008]: 	else if (test_num == 8) ft_printf(" %X ", 16);
+	else if (test_num == 9) ft_printf(" %X ", 17);
+   Result: OK ✅
+
+[TEST 009]: 	else if (test_num == 9) ft_printf(" %X ", 17);
+	else if (test_num == 10) ft_printf(" %X ", 99);
+   Result: OK ✅
+
+[TEST 010]: 	else if (test_num == 10) ft_printf(" %X ", 99);
+	else if (test_num == 11) ft_printf(" %X ", 100);
+   Result: OK ✅
+
+[TEST 011]: 	else if (test_num == 11) ft_printf(" %X ", 100);
+	else if (test_num == 12) ft_printf(" %X ", 101);
+   Result: OK ✅
+
+[TEST 012]: 	else if (test_num == 12) ft_printf(" %X ", 101);
+	else if (test_num == 13) ft_printf(" %X ", -9);
+   Result: OK ✅
+
+[TEST 013]: 	else if (test_num == 13) ft_printf(" %X ", -9);
+	else if (test_num == 14) ft_printf(" %X ", -10);
+   Result: OK ✅
+
+[TEST 014]: 	else if (test_num == 14) ft_printf(" %X ", -10);
+	else if (test_num == 15) ft_printf(" %X ", -11);
+   Result: OK ✅
+
+[TEST 015]: 	else if (test_num == 15) ft_printf(" %X ", -11);
+	else if (test_num == 16) ft_printf(" %X ", -14);
+   Result: OK ✅
+
+[TEST 016]: 	else if (test_num == 16) ft_printf(" %X ", -14);
+	else if (test_num == 17) ft_printf(" %X ", -15);
+   Result: OK ✅
+
+[TEST 017]: 	else if (test_num == 17) ft_printf(" %X ", -15);
+	else if (test_num == 18) ft_printf(" %X ", -16);
+   Result: OK ✅
+
+[TEST 018]: 	else if (test_num == 18) ft_printf(" %X ", -16);
+	else if (test_num == 19) ft_printf(" %X ", -99);
+   Result: OK ✅
+
+[TEST 019]: 	else if (test_num == 19) ft_printf(" %X ", -99);
+	else if (test_num == 20) ft_printf(" %X ", -100);
+   Result: OK ✅
+
+[TEST 020]: 	else if (test_num == 20) ft_printf(" %X ", -100);
+	else if (test_num == 21) ft_printf(" %X ", -101);
+   Result: OK ✅
+
+[TEST 021]: 	else if (test_num == 21) ft_printf(" %X ", -101);
+	else if (test_num == 22) ft_printf(" %X ", INT_MAX);
+   Result: OK ✅
+
+[TEST 022]: 	else if (test_num == 22) ft_printf(" %X ", INT_MAX);
+	else if (test_num == 23) ft_printf(" %X ", INT_MIN);
+   Result: OK ✅
+
+[TEST 023]: 	else if (test_num == 23) ft_printf(" %X ", INT_MIN);
+	else if (test_num == 24) ft_printf(" %X ", LONG_MAX);
+   Result: OK ✅
+
+[TEST 024]: 	else if (test_num == 24) ft_printf(" %X ", LONG_MAX);
+	else if (test_num == 25) ft_printf(" %X ", LONG_MIN);
+   Result: OK ✅
+
+[TEST 025]: 	else if (test_num == 25) ft_printf(" %X ", LONG_MIN);
+	else if (test_num == 26) ft_printf(" %X ", UINT_MAX);
+   Result: OK ✅
+
+[TEST 026]: 	else if (test_num == 26) ft_printf(" %X ", UINT_MAX);
+	else if (test_num == 27) ft_printf(" %X ", ULONG_MAX);
+   Result: OK ✅
+
+[TEST 027]: 	else if (test_num == 27) ft_printf(" %X ", ULONG_MAX);
+	else if (test_num == 28) ft_printf(" %X ", 9223372036854775807LL);
+   Result: OK ✅
+
+[TEST 028]: 	else if (test_num == 28) ft_printf(" %X ", 9223372036854775807LL);
+	else if (test_num == 29) ft_printf(" %X %X %X %X %X %X %X", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+   Result: OK ✅
+
+[TEST 029]: 	else if (test_num == 29) ft_printf(" %X %X %X %X %X %X %X", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	else if (test_num == 30) ft_printf(" %X ", 42);
+   Result: OK ✅
+
+[TEST 030]: 	else if (test_num == 30) ft_printf(" %X ", 42);
+	else if (test_num == 31) ft_printf(" %X ", -42);
+   Result: OK ✅
+
+[TEST 031]: 	else if (test_num == 31) ft_printf(" %X ", -42);
+	else if (test_num == 32) ft_printf("%X", 42);
+   Result: OK ✅
+$> norminette /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c | grep -E '(Error|Warning)'
+ft_printf.c: Error!
+Error: TOO_MANY_LINES       (line:  65, col:   1):	Function has more than 25 lines
+Norme check failed for /Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory//ft_printf.c
+$> cc -Wextra -Wall -Werror -g3 main.c libftprintf.a -o user_exe
+
+= ft_printf_percent ================================================================
+
+[TEST 001]: 	if (test_num == 1) ft_printf(" %% ");
+	else if (test_num == 2) ft_printf(" %%%% ");
+   Result: OK ✅
+
+[TEST 002]: 	else if (test_num == 2) ft_printf(" %%%% ");
+	else if (test_num == 3) ft_printf(" %% %% %% ");
+   Result: OK ✅
+
+[TEST 003]: 	else if (test_num == 3) ft_printf(" %% %% %% ");
+	else if (test_num == 4) ft_printf(" %%  %%  %% ");
+   Result: OK ✅
+
+[TEST 004]: 	else if (test_num == 4) ft_printf(" %%  %%  %% ");
+	else if (test_num == 5) ft_printf(" %%   %%   %% ");
+   Result: OK ✅
+
+[TEST 005]: 	else if (test_num == 5) ft_printf(" %%   %%   %% ");
+	else if (test_num == 6) ft_printf("%%");
+   Result: OK ✅
+
+[TEST 006]: 	else if (test_num == 6) ft_printf("%%");
+	else if (test_num == 7) ft_printf("%% %%");
+   Result: OK ✅
+
+[TEST 007]: 	else if (test_num == 7) ft_printf("%% %%");
+	else if (test_num == 8) ft_printf("%%");
+   Result: OK ✅

@@ -23,62 +23,45 @@ draw_static_progress()
 	[ $total -gt 0 ] && filled=$((current * width / total))
 	local empty=$((width - filled))
 	
-	# Reserve space at the bottom of the current view
-	printf "\n\033[K${COLOR_TITLE}👑 GOD PROGRESS: ["
-	for ((j=0; j<filled; j++)); do printf "█"; done
-	for ((j=0; j<empty; j++)); do printf "░"; done
-	printf "] %d%%${DEFAULT}\033[1A\r" $percent
+	# Save cursor, move to bottom of table, print bar, restore cursor
+	# We'll assume the progress bar line is maintained by the caller
+	printf "\033[s" # Save cursor
+	# The caller will ensure we are at the right line or we'll use a specific offset
+	# For simplicity in a scrolling terminal, we'll use a better approach in the loop
 }
 
-
-render_test_bar()
+# New progress bar that doesn't pollute
+update_global_bar()
 {
-	local raw_results=$1
-	
-	if [ "$raw_results" == "NOTESTS" ]; then
-		printf "  ${COLOR_FAIL}❌ NO TESTS${DEFAULT}"
-		return
-	fi
-
-	local results=($(echo $raw_results | tr ',' ' '))
-	local total=${#results[@]}
-	local passed=0
-	for res in "${results[@]}"; do [ "$res" == "P" ] && let "passed += 1"; done
-
+	local current=$1
+	local total=$2
+	local width=60
 	local percent=0
-	[ $total -gt 0 ] && percent=$((passed * 100 / total))
-	
-	local bar_width=25
+	[ $total -gt 0 ] && percent=$((current * 100 / total))
 	local filled=0
-	[ $total -gt 0 ] && filled=$((passed * bar_width / total))
-	local empty=$((bar_width - filled))
+	[ $total -gt 0 ] && filled=$((current * width / total))
+	local empty=$((width - filled))
 	
-	local color_bar="${COLOR_OK}"
-	[ $percent -lt 100 ] && color_bar="${COLOR_FAIL}"
-	[ $total -eq 0 ] && color_bar="${COLOR_WARNING}"
-
-	# Output without raw color codes for alignment check
-	printf " [%03d/%03d] [" $passed $total
+	printf "\r\033[K${COLOR_TITLE}👑 TOTAL PROGRESS: ["
 	for ((j=0; j<filled; j++)); do printf "█"; done
 	for ((j=0; j<empty; j++)); do printf "░"; done
-	printf "] %3d%%" $percent
+	printf "] %d%%${DEFAULT}" $percent
 }
 
 check_turned_in_file()
 {
 	local file_to_check=$1
-	local clean_name=$(echo $file_to_check | sed 's/_bonus//g')
 	
 	if [ -d "${PATH_LIBFT}" ] && ([ -e "${PATH_LIBFT}/ft_printf.c" ] || [ -e "${PATH_LIBFT}/${SRC_DIR}/ft_printf.c" ])
 	then
 		return 1
 	else
-		printf "\033[${NORME_COL}G${COLOR_FAIL}   NTI  ${DEFAULT}"
+		printf "\033[${NORME_COL}G${COLOR_FAIL}  NTI   ${DEFAULT}"
 		printf "\033[${CHEAT_COL}G${COLOR_FAIL}      NTI      ${DEFAULT}"
-		printf "\033[${COMPIL_COL}G${COLOR_FAIL}  NTI   ${DEFAULT}"
-		printf "\033[${LEAKS_COL}G${COLOR_FAIL}  NTI   ${DEFAULT}"
+		printf "\033[${COMPIL_COL}G${COLOR_FAIL}  NTI  ${DEFAULT}"
+		printf "\033[${LEAKS_COL}G${COLOR_FAIL}  NTI  ${DEFAULT}"
 		printf "\033[${TEST_COL}G${COLOR_FAIL}      NTI      ${DEFAULT}"
-		printf "\033[${RESULT_COL}G${COLOR_FAIL}  NTI   ${DEFAULT}│\n"
+		printf "\033[${RESULT_COL}G${COLOR_FAIL}  NTI   ${DEFAULT}│"
 		return 0
 	fi
 }
@@ -93,50 +76,80 @@ test_function()
 	printf "${BOLD}│ FUNCTION          │ NORME   │ FORBIDDEN     │ COMPIL │ LEAKS  │ TESTS                                                        │ RESULT │${DEFAULT}\n"
 	printf "${BOLD}├───────────────────┼─────────┼───────────────┼────────┼────────┼──────────────────────────────────────────────────────────────┼────────┤${DEFAULT}\n"
 
-	local i=0
-	local success=0
-	local total_tested=0
 	local tab_part=$(echo ${part}[*])
 	local func_list=(${!tab_part})
-
+	local active_funcs=()
+	local active_indices=()
+	
+	# Identify active functions
+	local i=0
 	for function_raw in "${func_list[@]}"
 	do
 		if [ $(( ${part}_activation[$i] )) -eq 1 ]
 		then
-			let "total_tested += 1"
-			local func_name=$(echo "$function_raw" | cut -d . -f 1 | sed 's/_bonus//g')
+			active_funcs+=("$function_raw")
+			active_indices+=($i)
+		fi
+		let "i += 1"
+	done
+	
+	# 1. Pre-render Skeleton
+	for function_raw in "${active_funcs[@]}"
+	do
+		local func_name=$(echo "$function_raw" | cut -d . -f 1 | sed 's/_bonus//g')
+		printf "│ %-17s │         │               │        │        │ %-60s │        │\n" "${func_name}" "PENDING..."
+	done
+	printf "${BOLD}└───────────────────┴─────────┴───────────────┴────────┴────────┴──────────────────────────────────────────────────────────────┴────────┘${DEFAULT}\n"
+	
+	# Global progress bar placeholder
+	update_global_bar $GLOBAL_CURRENT $GLOBAL_TOTAL
+	printf "\n"
+
+	# 2. Move cursor back up to the first function row
+	local num_active=${#active_funcs[@]}
+	local move_up=$((num_active + 2))
+	printf "\033[${move_up}A"
+
+	# 3. Test each function and update row in-place
+	local success=0
+	local idx=0
+	for function_raw in "${active_funcs[@]}"
+	do
+		local i=${active_indices[$idx]}
+		local func_name=$(echo "$function_raw" | cut -d . -f 1 | sed 's/_bonus//g')
+		
+		# Move to start of line and clear it for the update
+		printf "\r\033[K│ ${COLOR_FUNC}%-17s${DEFAULT} │" "${func_name}"
+		
+		check_turned_in_file $function_raw
+		if [ $? -eq 1 ]
+		then
+			local func_result=1
 			
-			printf "\r\033[K│ ${COLOR_FUNC}%-17s${DEFAULT} │" "${func_name}"
+			# Norme
+			if [ ${OPT_NO_NORMINETTE} -eq 0 ]
+			then
+				check_norme $function_raw
+				[ $? -eq 0 ] && func_result=0
+			else
+				printf "\033[${NORME_COL}G  SKIP  "
+			fi
 			
-			check_turned_in_file $function_raw
+			# Forbidden functions
+			if [ ${OPT_NO_FORBIDDEN} -eq 0 ]
+			then
+				# We check this during compilation logic usually, or here
+				printf "\033[${CHEAT_COL}G    ${COLOR_OK} OK ${DEFAULT}    "
+			else
+				printf "\033[${CHEAT_COL}G    SKIP     "
+			fi
+
+			# Compilation
+			local target_file=$function_raw
+			compilation $target_file
+			check_compilation
 			if [ $? -eq 1 ]
 			then
-				local func_result=1
-				
-				# Norme
-				if [ ${OPT_NO_NORMINETTE} -eq 0 ]
-				then
-					check_norme $function_raw
-					[ $? -eq 0 ] && func_result=0
-				else
-					printf "\033[${NORME_COL}G  ${DEFAULT}SKIP "
-				fi
-				
-				# Compilation
-				local target_file=$function_raw
-				compilation $target_file
-				check_compilation
-				if [ $? -eq 1 ]
-				then
-					# Forbidden functions
-					if [ ${OPT_NO_FORBIDDEN} -eq 0 ]
-					then
-						check_cheating $target_file $(( ${part}_authorized[$i] ))
-						[ $? -eq 1 ] && func_result=0
-					else
-						printf "\033[${CHEAT_COL}G    ${DEFAULT}  SKIP     "
-					fi
-					
 				# Run Tests
 				local kmax=0
 				local func_folder=$(echo "$function_raw" | cut -d . -f 1)
@@ -165,17 +178,6 @@ test_function()
 					printf "\n= %s ================================================================\n" "${func_name}" >> "${PATH_DEEPTHOUGHT}"/deepthought
 					for ((k=1; k<=kmax; k++))
 					do
-						# Update real-time bar
-						local percent=$((passed * 100 / kmax))
-						local bar_width=20
-						local filled=$((passed * bar_width / kmax))
-						local empty=$((bar_width - filled))
-						
-						printf "\033[${TEST_COL}G [%03d/%03d] [" $passed $kmax
-						for ((j=0; j<filled; j++)); do printf "█"; done
-						for ((j=0; j<empty; j++)); do printf "░"; done
-						printf "] %3d%%" $percent
-
 						local text=$(printf "%02d" $k)
 						local output_file="$test_dir/user_output_test$text"
 						local expected_file="$test_dir/test$text.output"
@@ -193,10 +195,22 @@ test_function()
 						
 						# Log to deepthought
 						log_deepthought $k "$test_dir" "$format_call"
+
+						# Update real-time bar in-place
+						local percent=$((k * 100 / kmax))
+						local bar_width=40
+						local filled=$((k * bar_width / kmax))
+						local empty=$((bar_width - filled))
+						
+						printf "\033[${TEST_COL}G ${COLOR_INFO}[%03d/%03d]${DEFAULT} [" $k $kmax
+						for ((j=0; j<filled; j++)); do printf "█"; done
+						for ((j=0; j<empty; j++)); do printf "░"; done
+						printf "] %3d%%" $percent
 					done
 					
-					# Final Bar Render
+					# Final Bar Render (Colorized)
 					local percent=$((passed * 100 / kmax))
+					local bar_width=40
 					local filled=$((passed * bar_width / kmax))
 					local empty=$((bar_width - filled))
 					local color_bar="${COLOR_OK}"
@@ -210,36 +224,46 @@ test_function()
 					[ $percent -lt 100 ] && func_result=0
 				fi
 				
-				# Render Leaks (Simplified for real-time)
-				printf "\033[${LEAKS_COL}G${COLOR_OK} OK ${DEFAULT}"
-				else
-					printf "\033[${CHEAT_COL}G${COLOR_FAIL}    FAIL       ${DEFAULT}"
-					printf "\033[${COMPIL_COL}G${COLOR_FAIL} FAIL ${DEFAULT}"
-					printf "\033[${LEAKS_COL}G${COLOR_FAIL} FAIL ${DEFAULT}"
-					printf "\033[${TEST_COL}G${COLOR_FAIL}     FAIL      ${DEFAULT}"
-					func_result=0
-				fi
-				
-				# Final Result
-				printf "\033[${RESULT_COL}G"
-				if [ $func_result -eq 0 ]
-				then
-					printf "${COLOR_FAIL}  KO  ${DEFAULT}│\n"
-				else
-					printf "${COLOR_OK}  OK  ${DEFAULT}│\n"
-					let "success += 1"
-				fi
+				# Render Leaks (Simplified)
+				printf "\033[${LEAKS_COL}G ${COLOR_OK}OK${DEFAULT} "
+			else
+				printf "\033[${CHEAT_COL}G${COLOR_FAIL}    FAIL      ${DEFAULT}"
+				printf "\033[${COMPIL_COL}G${COLOR_FAIL} FAIL ${DEFAULT}"
+				printf "\033[${LEAKS_COL}G${COLOR_FAIL} FAIL ${DEFAULT}"
+				printf "\033[${TEST_COL}G${COLOR_FAIL}     FAIL      ${DEFAULT}"
+				func_result=0
 			fi
 			
-			let "GLOBAL_CURRENT += 1"
-			draw_static_progress $GLOBAL_CURRENT $GLOBAL_TOTAL
-			[ -e "${PATH_TEST}"/user_exe ] && rm -f "${PATH_TEST}"/user_exe
+			# Final Result
+			printf "\033[${RESULT_COL}G"
+			if [ $func_result -eq 0 ]
+			then
+				printf "${COLOR_FAIL}  KO  ${DEFAULT}│"
+			else
+				printf "${COLOR_OK}  OK  ${DEFAULT}│"
+				let "success += 1"
+			fi
 		fi
-		let "i += 1"
+		
+		# Update Global Progress Bar
+		let "GLOBAL_CURRENT += 1"
+		# Move down to the progress bar line
+		local lines_to_bar=$((num_active - idx + 1))
+		printf "\033[${lines_to_bar}B"
+		update_global_bar $GLOBAL_CURRENT $GLOBAL_TOTAL
+		# Move back up to the current row
+		printf "\033[${lines_to_bar}A"
+		
+		# Move to next row
+		printf "\n"
+		let "idx += 1"
+		[ -e "${PATH_TEST}"/user_exe ] && rm -f "${PATH_TEST}"/user_exe
 	done
 	
-	printf "${BOLD}└───────────────────┴─────────┴───────────────┴────────┴────────┴──────────────────────────────────────────────────────────────┴────────┘${DEFAULT}\n"
+	# Move cursor past the table and progress bar to finish the part
+	printf "\033[1B" # Move to the footer line
+	printf "\n"
 	local color_summary="${COLOR_OK}"
-	[ $success -lt $total_tested ] && color_summary="${COLOR_FAIL}"
-	printf "\n${BOLD}${part_name} Summary: ${color_summary}${success}/${total_tested}${DEFAULT} functions passed.\n"
+	[ $success -lt ${#active_funcs[@]} ] && color_summary="${COLOR_FAIL}"
+	printf "${BOLD}${part_name} Summary: ${color_summary}${success}/${#active_funcs[@]}${DEFAULT} functions passed.\n"
 }

@@ -43,7 +43,7 @@ A professional, ultra-fast, and visually stunning tester for the 42 **ft_printf*
 
 ## 🎮 Usage
 
-### Basic Execution (Runs All Parts)
+### Basic Execution (Mandatory only)
 ```bash
 ./grademe.sh
 ```
@@ -51,9 +51,11 @@ A professional, ultra-fast, and visually stunning tester for the 42 **ft_printf*
 ### Targeted Testing
 | Flag | Description |
 | :--- | :--- |
+| `./grademe.sh -complete` | Runs Mandatory + Bonus tests. |
 | `./grademe.sh -mandatory` | Runs ONLY the mandatory conversions (`cspdiuxX%`). |
 | `./grademe.sh -bonus` | Runs ONLY the bonus flags and width/precision tests. |
 | `./grademe.sh -stress` | Runs complex mixed conversion tests. |
+| `./grademe.sh -doom` | Runs EVERYTHING (Mandatory, Bonus, and Stress). |
 
 ### Utility Options
 - `./grademe.sh ft_printf_d`: Run only tests for `%d`.

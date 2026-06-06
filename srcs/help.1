@@ -19,6 +19,7 @@
 .SH DESCRIPTION
 Libft-God is a modern shell script that allows you to test your libft project following the 2026 PDF standard.
 It includes checks for Norminette, Forbidden functions, Compilation, and Memory Leaks (Valgrind).
+By default, it only runs Mandatory tests. Use -complete to include Bonus tests.
 .SH OPTIONS
 Add successively all options you want, in the order you want.
 .TP
@@ -62,6 +63,9 @@ Disable checking updates at launch
 .B -doom ", " -hardcore
 Enable DOOM/Hardcore mode: runs exhaustive and ostensive tests (Part 1, 2 and 3 complete).
 By default, the tester runs in SIMPLE MODE (limited tests).
+.TP
+.B -complete
+Runs both Mandatory and Bonus tests.
 .TP
 .B -p1
 Disable Mandatory tests

@@ -63,6 +63,9 @@ do
 		                                        CHECK_IN_PART3=0
 		                                        CHECK_IN_BONUS=0
 		                                        CHECK_IN_MANDATORY=0 ;;
+		"-complete")                    OPT_NO_MANDATORY=0
+		                                        OPT_NO_BONUS=0
+		                                        OPT_NO_PART3=1 ;;
 		"-p1")                          OPT_NO_MANDATORY=1
 		                                        CHECK_IN_MANDATORY=0 ;;
 		"-p2")                          OPT_NO_BONUS=1

@@ -37,10 +37,10 @@ check_compilation()
 	printf "\033[${COMPIL_COL}G"
 	if [ -e "${PATH_TEST}"/user_exe ]
 	then
-		printf "  ${COLOR_OK}✅ OK ${DEFAULT}"
+		printf " ✅ OK "
 		return 1
 	else
-		printf "  ${COLOR_FAIL}❌ ERR${DEFAULT}"
+		printf " ❌ ERR"
 		return 0
 	fi
 }
