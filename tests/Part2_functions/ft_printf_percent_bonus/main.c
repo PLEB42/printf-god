@@ -48,6 +48,7 @@ int main(int argc, char **argv)
 	if (argc < 2) return 1;
 	int test_num = atoi(argv[1]);
 	int ret = 0;
+	(void)test_num;
 	printf("\n[RET: %d]", ret);
 	return 0;
 }

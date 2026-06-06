@@ -19,7 +19,7 @@ compilation()
 		rm -f "${PATH_TEST}"/user_exe
 	fi
 	
-	local test_main="${PATH_TEST}/tests/$(echo ${part}tions)/$(echo $1 | cut -d . -f 1 | sed 's/_bonus//g')/main.c"
+	local test_main="${PATH_TEST}/tests/$(echo ${part}tions)/$(echo $1 | cut -d . -f 1)/main.c"
 	local lib_a="${PATH_LIBFT}/libftprintf.a"
 
 	printf "$> cc -Wextra -Wall -Werror -g3 main.c libftprintf.a -o user_exe\n" >> "${PATH_DEEPTHOUGHT}"/deepthought
