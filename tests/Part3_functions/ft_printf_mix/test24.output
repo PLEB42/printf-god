@@ -1,2 +1,2 @@
-Mix:          B hello      0x1234 0000000123 -123 123 7b 7B %
-[RET: 61]
+Mix: A test 0xdeadbeef 42 -42 42 2a 2A %
+[RET: 40]

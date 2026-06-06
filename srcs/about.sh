@@ -6,7 +6,7 @@ display_about()
 	clear
 	printf "${COLOR_TITLE}╔════════════════════──────────────────────────────────────────════════════════════╗${DEFAULT}\n"
 	printf "${COLOR_TITLE}║                                                                                  ║${DEFAULT}\n"
-	printf "${COLOR_TITLE}║                       LIBFT - GOD TESTER (VERSION 2026)                          ║${DEFAULT}\n"
+	printf "${COLOR_TITLE}║                       FT_PRINTF - GOD TESTER (VERSION 2026)                      ║${DEFAULT}\n"
 	printf "${COLOR_TITLE}║                                                                                  ║${DEFAULT}\n"
 	printf "${COLOR_TITLE}╚════════════════════──────────────────────────────────────────════════════════════╝${DEFAULT}\n"
 	printf "\n"

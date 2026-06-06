@@ -13,33 +13,33 @@
 #!/bin/bash
 
 ###################################################
-#                 Part1 functions                 #
+#              Mandatory functions                #
 ###################################################
 
-Part1_func=('ft_printf_c.c' 'ft_printf_s.c' 'ft_printf_p.c' 'ft_printf_d.c' 'ft_printf_i.c' \
+Mandatory_func=('ft_printf_c.c' 'ft_printf_s.c' 'ft_printf_p.c' 'ft_printf_d.c' 'ft_printf_i.c' \
 'ft_printf_u.c' 'ft_printf_x.c' 'ft_printf_X_upper.c' 'ft_printf_percent.c')
 
 # Authorized bits: 1=malloc, 2=free, 4=write
-Part1_func_authorized=('1' '1' '1' '1' '1' \
+Mandatory_func_authorized=('1' '1' '1' '1' '1' \
 '1' '1' '1' '1')
 
-Part1_func_activation=('0' '0' '0' '0' '0' \
+Mandatory_func_activation=('0' '0' '0' '0' '0' \
 '0' '0' '0' '0')
 
 ###################################################
-#                 Part2 functions                 #
+#                Bonus functions                  #
 ###################################################
 
-Part2_func=('ft_printf_c_bonus.c' 'ft_printf_s_bonus.c' 'ft_printf_p_bonus.c' 'ft_printf_d_bonus.c' \
+Bonus_func=('ft_printf_c_bonus.c' 'ft_printf_s_bonus.c' 'ft_printf_p_bonus.c' 'ft_printf_d_bonus.c' \
 'ft_printf_i_bonus.c' 'ft_printf_u_bonus.c' 'ft_printf_x_bonus.c' 'ft_printf_X_upper_bonus.c' \
 'ft_printf_percent_bonus.c')
 
 # Authorized bits: 1=malloc, 2=free, 4=write
-Part2_func_authorized=('1' '1' '1' '1' \
+Bonus_func_authorized=('1' '1' '1' '1' \
 '1' '1' '1' '1' \
 '1')
 
-Part2_func_activation=('0' '0' '0' '0' \
+Bonus_func_activation=('0' '0' '0' '0' \
 '0' '0' '0' '0' \
 '0')
 
@@ -58,7 +58,7 @@ Part3_func_activation=('0')
 #                 Other variables                 #
 ###################################################
 
-tab_all_part=('Part1_func' 'Part2_func' 'Part3_func')
+tab_all_part=('Mandatory_func' 'Bonus_func' 'Part3_func')
 
 num_sys_func=('1' '2' '4')
 system_func=('void' 'malloc' 'free' 'printf' 'write')
@@ -83,13 +83,17 @@ OPT_NO_FORBIDDEN=0
 OPT_NO_NORMINETTE=0
 OPT_NO_UPDATE=1
 OPT_FAST=0
-OPT_NO_PART1=0
-OPT_NO_PART2=0
-OPT_NO_PART3=0
-ACTIVATE_PART1=0
-ACTIVATE_PART2=0
+OPT_NO_MANDATORY=0
+OPT_NO_BONUS=0
+OPT_NO_PART3=1
+ACTIVATE_MANDATORY=0
+ACTIVATE_BONUS=0
 ACTIVATE_PART3=0
-CHECK_IN_PART1=1
-CHECK_IN_PART2=1
+CHECK_IN_MANDATORY=1
+CHECK_IN_BONUS=1
 CHECK_IN_PART3=1
 CUSTOM_DIRECTORY=0
+OPT_DOOM=0
+OPT_HARDCORE=0
+SIMPLE_LIMIT_P1=1000
+SIMPLE_LIMIT_P2=1000

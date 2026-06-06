@@ -1,2 +1,2 @@
-left            12345 0x1 0 0 0 0   %
-[RET: 37]
+str 10 0xabcdef ff FF 4294967295 -1 z %
+[RET: 39]

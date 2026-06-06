@@ -148,6 +148,16 @@ test_function()
 					cd "${PATH_TEST}"
 				fi
 
+				if [ ${OPT_DOOM} -eq 0 ]; then
+					if [ -e "$test_dir/.simple_limit" ]; then
+						kmax=$(cat "$test_dir/.simple_limit")
+					elif [ "$part_name" == "Mandatory" ] && [ $kmax -gt $SIMPLE_LIMIT_P1 ]; then
+						kmax=$SIMPLE_LIMIT_P1
+					elif [ "$part_name" == "Bonus" ] && [ $kmax -gt $SIMPLE_LIMIT_P2 ]; then
+						kmax=$SIMPLE_LIMIT_P2
+					fi
+				fi
+
 				local passed=0
 				if [ $kmax -eq 0 ]; then
 					printf "\033[${TEST_COL}G  ${COLOR_FAIL}❌ NO TESTS${DEFAULT}"

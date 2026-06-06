@@ -5,7 +5,7 @@
 ###################################
 
 #Edit the next line with the path of your libft project.
-PATH_LIBFT=""
+PATH_LIBFT="/Users/refernan/projects/old_git/projects/milestone_1/ft_printf/ft_printf_mandatory/"
 
 #If you use a relative path, don't put double quotes.
 #For example :
