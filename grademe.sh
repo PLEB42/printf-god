@@ -42,25 +42,34 @@ do
 		"-n")				OPT_NO_NORMINETTE=1 ;;
 		"-u")                           OPT_NO_UPDATE=1 ;;
 		"-fast")                        OPT_FAST=1 ;;
-		"-mandatory" | "-op1")          OPT_NO_PART2=1
+		"-doom" | "-hardcore")          OPT_DOOM=1
+		                                OPT_HARDCORE=1
+		                                OPT_NO_MANDATORY=0
+		                                OPT_NO_BONUS=0
+		                                OPT_NO_PART3=0 ;;
+		"-mandatory" | "-op1")          OPT_NO_BONUS=1
 		                                        OPT_NO_PART3=1
-		                                        CHECK_IN_PART1=0
-		                                        CHECK_IN_PART2=0
+		                                        CHECK_IN_MANDATORY=0
+		                                        CHECK_IN_BONUS=0
 		                                        CHECK_IN_PART3=0 ;;
-		"-bonus" | "-op2")              OPT_NO_PART1=1
+		"-bonus" | "-op2")              OPT_NO_MANDATORY=1
 		                                        OPT_NO_PART3=1
-		                                        CHECK_IN_PART2=0
-		                                        CHECK_IN_PART1=0
+		                                        CHECK_IN_BONUS=0
+		                                        CHECK_IN_MANDATORY=0
 		                                        CHECK_IN_PART3=0 ;;
-		"-stress" | "-op3")             OPT_NO_PART1=1
-		                                        OPT_NO_PART2=1
+		"-stress" | "-op3")             OPT_NO_MANDATORY=1
+		                                        OPT_NO_BONUS=1
+		                                        OPT_NO_PART3=0
 		                                        CHECK_IN_PART3=0
-		                                        CHECK_IN_PART2=0
-		                                        CHECK_IN_PART1=0 ;;
-		"-p1")                          OPT_NO_PART1=1
-		                                        CHECK_IN_PART1=0 ;;
-		"-p2")                          OPT_NO_PART2=1
-		                                        CHECK_IN_PART2=0 ;;
+		                                        CHECK_IN_BONUS=0
+		                                        CHECK_IN_MANDATORY=0 ;;
+		"-complete")                    OPT_NO_MANDATORY=0
+		                                        OPT_NO_BONUS=0
+		                                        OPT_NO_PART3=1 ;;
+		"-p1")                          OPT_NO_MANDATORY=1
+		                                        CHECK_IN_MANDATORY=0 ;;
+		"-p2")                          OPT_NO_BONUS=1
+		                                        CHECK_IN_BONUS=0 ;;
 		"-p3")                          OPT_NO_PART3=1
 		                                        CHECK_IN_PART3=0 ;;
 
@@ -186,7 +195,11 @@ init_deepthought
 # Header Moderno
 printf "${COLOR_TITLE}╔════════════════════──────────────────────────────────────────════════════════════╗${DEFAULT}\n"
 printf "${COLOR_TITLE}║                                                                                  ║${DEFAULT}\n"
-printf "${COLOR_TITLE}║                      FT_PRINTF - GOD TESTER (VERSION 2026)                       ║${DEFAULT}\n"
+if [ ${OPT_DOOM} -eq 1 ]; then
+printf "${COLOR_TITLE}║                      FT_PRINTF - GOD TESTER (DOOM MODE)                          ║${DEFAULT}\n"
+else
+printf "${COLOR_TITLE}║                      FT_PRINTF - GOD TESTER (SIMPLE MODE)                        ║${DEFAULT}\n"
+fi
 printf "${COLOR_TITLE}║                                                                                  ║${DEFAULT}\n"
 printf "${COLOR_TITLE}╚════════════════════──────────────────────────────────────────════════════════════╝${DEFAULT}\n"
 
