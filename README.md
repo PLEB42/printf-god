@@ -24,7 +24,7 @@ A professional, ultra-fast, and visually stunning tester for the 42 **ft_printf*
 
 1. **Clone** this repository inside your `ft_printf` folder:
    ```bash
-   git clone https://github.com/refernan/printf-god.git god_tester
+   git clone https://github.com/PLEB42/printf-god.git god_tester
    ```
 
 2. **Configure** your paths in `my_config.sh`:
