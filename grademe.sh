@@ -123,37 +123,32 @@ HEADER_DIR=""
 SRC_DIR=""
 PATH_DEEPTHOUGHT="${PATH_TEST}"
 
+# Se o arquivo my_config.sh não existir, gera-o automaticamente a partir do modelo
+if [ ! -e "${PATH_TEST}"/my_config.sh ] && [ -e "${PATH_TEST}"/srcs/config_template.sh ]
+then
+	cp "${PATH_TEST}"/srcs/config_template.sh "${PATH_TEST}"/my_config.sh
+fi
+
+# Carregar o arquivo de configuração se ele existir
+if [ -e "${PATH_TEST}"/my_config.sh ]
+then
+	source "${PATH_TEST}"/my_config.sh
+fi
+
 # Prioridade: verificar se o diretório pai (superior) é o projeto ft_printf do usuário.
 # Um projeto ft_printf válido normalmente possui ft_printf.c ou Makefile ou ft_printf.h.
 PARENT_DIR="$(cd "${PATH_TEST}/.." && pwd -P)"
 if [ -e "${PARENT_DIR}/ft_printf.c" ] || [ -e "${PARENT_DIR}/Makefile" ] || [ -e "${PARENT_DIR}/ft_printf.h" ]
 then
 	PATH_LIBFT="${PARENT_DIR}"
-	# Se my_config.sh existir, nós o carregamos para obter as cores e outras opções,
-	# mas mantemos PATH_LIBFT apontando para PARENT_DIR como prioridade.
-	if [ -e "${PATH_TEST}"/my_config.sh ]
-	then
-		source "${PATH_TEST}"/my_config.sh
-		PATH_LIBFT="${PARENT_DIR}"
-	fi
 else
-	# Se o diretório superior não for o projeto, segue o fluxo normal de verificar/carregar my_config.sh
-	if [ ! -e "${PATH_TEST}"/my_config.sh ]
+	# Se o diretório superior não for o projeto, mas PATH_LIBFT estiver vazio no my_config.sh, pede para editar
+	if [ -z "${PATH_LIBFT}" ]
 	then
-		printf "${BOLD}my_config.sh${DEFAULT} file is not found.\n"
-		printf "Creating file...\n"
-		if [ -e "${PATH_TEST}"/srcs/config_template.sh ]
-		then
-			cp "${PATH_TEST}"/srcs/config_template.sh "${PATH_TEST}"/my_config.sh
-			printf "File created with success in ${BOLD}${PURPLE}${PATH_TEST}\n${DEFAULT}"
-			printf "${RED}${UNDERLINE}Edit my_config.sh file${DEFAULT} with the path of your libft project and launch script.\n"
-		else
-			printf "Can't create my_config.sh file, try to update or clone again the repository and retry.\n"
-			exit
-		fi
+		printf "${BOLD}my_config.sh${DEFAULT} has an empty PATH_LIBFT.\n"
+		printf "${RED}${UNDERLINE}Edit my_config.sh file${DEFAULT} with the path of your libft/ft_printf project and relaunch.\n"
 		exit
 	fi
-	source "${PATH_TEST}"/my_config.sh
 fi
 
 if [ ${CUSTOM_DIRECTORY} -eq 1 ]
