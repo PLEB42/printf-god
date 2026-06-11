@@ -1,4 +1,4 @@
-# 👑 FT_PRINTF-GOD (Version 2026)
+# 👑 PRINTF-GOD (Version 2026)
 
 <p align="center">
   <img src="https://img.shields.io/badge/Project-ft__printf-blueviolet?style=for-the-badge&logo=42" alt="42 Project">
@@ -24,7 +24,7 @@ A professional, ultra-fast, and visually stunning tester for the 42 **ft_printf*
 
 1. **Clone** this repository inside your `ft_printf` folder:
    ```bash
-   git clone https://github.com/refernan/ft_printf-god.git god_tester
+   git clone https://github.com/refernan/printf-god.git god_tester
    ```
 
 2. **Configure** your paths in `my_config.sh`:
