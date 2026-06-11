@@ -8,6 +8,18 @@
 A professional, ultra-fast, and visually stunning tester for the 42 **ft_printf** project. Re-engineered to align perfectly with the **2024-2026 Subject** requirements.
 
 ---
+> [!WARNING]
+> ### ⚖️ Academic Integrity & Official Disclaimer
+> PLEB42 is an entirely **independent community initiative**. It is **not** officially endorsed by, affiliated with, or sponsored by the Staff of 42 or 42 São Paulo.
+> * **Zero Solution Hosting:** None of our repositories will ever host, share, or leak source code solutions for curriculum assignments. Our engineering scope is strictly limited to behavior validation, crash identification, and memory leak analysis.
+> * **No Academic Verdicts:** Passing a PLEB42 test suite provides **no guarantee** of passing the official Moulinette evaluation. Cadets bear ultimate and sole responsibility for the integrity, compliance, and originality of their submissions.
+
+> [!CAUTION]
+> ### 🚨 Academic Integrity & Peer-Review Warning 
+> **This tester is designed to be intentionally rigorous by nature (overkill).** It tests extreme edge cases that often go beyond the official curriculum requirements. 
+> * **Do not fail your peers unfairly:** A failure in this test suite **does not** mean a student should fail their peer-review.
+> * **Evaluation Criteria:** If your peer's code functions correctly and respects the official project *subject*, it deserves a pass. Use this tool for learning, not as an absolute grading metric.
+---
 
 ## ✨ Features
 
