@@ -1,6 +1,6 @@
 # 🛠 Supported Conversions & Test Logic
 
-**FT_PRINTF-GOD** organizes its tests into three logical categories to facilitate debugging and incremental development.
+**PRINTF-GOD** organizes its tests into three logical categories to facilitate debugging and incremental development.
 
 ---
 
