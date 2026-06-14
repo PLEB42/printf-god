@@ -141,14 +141,13 @@ PARENT_DIR="$(cd "${PATH_TEST}/.." && pwd -P)"
 if [ -e "${PARENT_DIR}/ft_printf.c" ] || [ -e "${PARENT_DIR}/Makefile" ] || [ -e "${PARENT_DIR}/ft_printf.h" ]
 then
 	PATH_LIBFT="${PARENT_DIR}"
-else
-	# Se o diretório superior não for o projeto, mas PATH_LIBFT estiver vazio no my_config.sh, pede para editar
-	if [ -z "${PATH_LIBFT}" ]
-	then
-		printf "${BOLD}my_config.sh${DEFAULT} has an empty PATH_LIBFT.\n"
-		printf "${RED}${UNDERLINE}Edit my_config.sh file${DEFAULT} with the path of your libft/ft_printf project and relaunch.\n"
-		exit
-	fi
+fi
+
+if [ -z "${PATH_LIBFT}" ]
+then
+	printf "${BOLD}my_config.sh${DEFAULT} has an empty PATH_LIBFT.\n"
+	printf "${RED}${UNDERLINE}Edit my_config.sh file${DEFAULT} with the path of your libft/ft_printf project and relaunch.\n"
+	exit
 fi
 
 if [ ${CUSTOM_DIRECTORY} -eq 1 ]
